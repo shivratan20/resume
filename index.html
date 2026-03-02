@@ -107,34 +107,93 @@ filter:invert(1);
 opacity:.8;
 }
 
-/* SKILLS MODERN */
+/* =========================
+   SKILLS MODERN 3D
+========================= */
+
 .skills-modern{
-background:#020c22;
-padding:70px 20px;
+    background:radial-gradient(circle at top,#020c22,#020617);
+    padding:80px 20px;
+    perspective:1000px; /* enables 3D */
 }
 
 .skills-modern h2{
-text-align:center;
-color:#38bdf8;
-margin-bottom:40px;
+    text-align:center;
+    color:#38bdf8;
+    margin-bottom:50px;
+    font-size:32px;
+    letter-spacing:1px;
 }
 
-.skill-category{margin-bottom:30px}
+/* GRID ALIGN */
+.skills-modern .container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
 
-.skill-category h3{margin-bottom:15px}
+/* CATEGORY CARD */
+.skill-category{
+    background:linear-gradient(145deg,#0f172a,#020617);
+    padding:25px;
+    border-radius:16px;
+    transition:.5s ease;
+    transform-style:preserve-3d;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.5),
+        inset 0 0 20px rgba(56,189,248,.05);
+}
 
+/* 3D HOVER */
+.skill-category:hover{
+    transform:
+        rotateX(6deg)
+        rotateY(-6deg)
+        translateY(-8px)
+        scale(1.02);
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,.7),
+        0 0 25px rgba(56,189,248,.35);
+}
+
+/* TITLE */
+.skill-category h3{
+    margin-bottom:18px;
+    color:#e2e8f0;
+    font-size:18px;
+}
+
+/* TAG WRAP */
 .skill-tags{
-display:flex;
-flex-wrap:wrap;
-gap:12px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
 }
 
+/* SKILL TAG */
 .skill-tag{
-background:#16324a;
-padding:10px 18px;
-border-radius:10px;
-color:#38bdf8;
-font-weight:600;
+    background:#16324a;
+    padding:10px 18px;
+    border-radius:10px;
+    color:#38bdf8;
+    font-weight:600;
+    transition:.35s;
+    transform:translateZ(20px);
+}
+
+/* TAG HOVER GLOW */
+.skill-tag:hover{
+    transform:
+        translateY(-4px)
+        scale(1.08);
+
+    background:#38bdf8;
+    color:#020617;
+
+    box-shadow:
+        0 0 15px #38bdf8,
+        0 0 30px rgba(56,189,248,.5);
 }
 
 /* FOOTER */
@@ -224,6 +283,190 @@ padding:8px;
 .hero{grid-template-columns:1fr}
 }
 
+/* =========================
+   EDUCATION SECTION
+========================= */
+
+.education-modern{
+    background:#020c22;
+    padding:80px 20px;
+}
+
+.education-modern h2{
+    text-align:center;
+    color:var(--primary);
+    font-size:32px;
+    margin-bottom:50px;
+    letter-spacing:1px;
+}
+
+/* GRID */
+.education-modern .container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+/* CARD */
+.education-card{
+    background:linear-gradient(
+        145deg,
+        #0f172a,
+        #020617
+    );
+    border-radius:14px;
+    padding:28px;
+    position:relative;
+    transition:.35s ease;
+    border-left:5px solid var(--primary);
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+/* HOVER EFFECT */
+.education-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 40px rgba(56,189,248,.25);
+}
+
+/* DEGREE */
+.education-card h3{
+    font-size:20px;
+    margin-bottom:8px;
+    color:#ffffff;
+}
+
+/* COLLEGE NAME */
+.edu-college{
+    color:#38bdf8;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+/* YEAR */
+.edu-year{
+    color:#94a3b8;
+    font-size:14px;
+}
+
+/* SMALL ACCENT DOT */
+.education-card::before{
+    content:"🎓";
+    position:absolute;
+    top:-14px;
+    left:-14px;
+    background:#38bdf8;
+    color:#000;
+    width:36px;
+    height:36px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-size:16px;
+}
+
+.projects-modern {
+    padding: 80px 20px;
+    background: #0f172a;
+    color: white;
+}
+
+.projects-modern h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.project-card {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.project-tech {
+    color: #38bdf8;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   EXPERIENCE SECTION
+========================= */
+
+.experience-modern{
+    background:#0f172a;
+    padding:80px 20px;
+}
+
+.experience-modern h2{
+    text-align:center;
+    color:var(--primary);
+    margin-bottom:50px;
+    font-size:32px;
+}
+
+/* GRID */
+.experience-modern .container{
+    display:flex;
+    justify-content:center;
+}
+
+/* CARD */
+.experience-card{
+    max-width:900px;
+    background:linear-gradient(145deg,#020617,#0f172a);
+    padding:30px;
+    border-radius:16px;
+    border-left:5px solid var(--primary);
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+    transition:.35s;
+}
+
+.experience-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 50px rgba(56,189,248,.25);
+}
+
+/* HEADER */
+.exp-header{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+}
+
+.exp-header h3{
+    font-size:22px;
+}
+
+.exp-duration{
+    color:#94a3b8;
+    font-size:14px;
+}
+
+/* COMPANY */
+.exp-company{
+    color:#38bdf8;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+/* POINTS */
+.exp-points{
+    padding-left:20px;
+}
+
+.exp-points li{
+    margin-bottom:10px;
+    color:#cbd5e1;
+}
+
 </style>
 </head>
 
@@ -249,12 +492,27 @@ padding:8px;
 <p>Backend Engineer • AI Developer</p>
 
 <div class="profile-actions">
-<a href="resume.pdf" class="cv-btn">⬇ Download CV</a>
+
+<a href="shiv-ratan.docx" class="cv-btn">⬇ Download CV</a>
 
 <div class="social-icons">
-<img src="https://cdn-icons-png.flaticon.com/512/174/174857.png">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733553.png">
-<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png">
+
+    <a href="https://linkedin.com/in/shiv-ratan-chaurasia-035558227/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+    </a>
+
+    <a href="https://github.com/shivratan20/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+    </a>
+
+    <a href="mailto:shivratanchaurasia03@gmail.com" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB81srFeDr4XXdlLDeaU2Ga3AV6QsUjh4UQA&s" alt="mail">
+    </a>
+
+    <a href="tel:+919319848814" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8OLgR1m8iL3BaVoayTLslIfTFrlnWrI6XzA&s" alt="phone">
+    </a>
+
 </div>
 </div>
 
@@ -285,6 +543,8 @@ padding:8px;
 <div class="skill-tags">
 <span class="skill-tag">Django</span>
 <span class="skill-tag">Laravel</span>
+<span class="skill-tag">FastAPI</span>
+<span class="skill-tag">codeigniter 3</span>
 <span class="skill-tag">Redis</span>
 <span class="skill-tag">Celery</span>
 </div>
@@ -299,16 +559,207 @@ padding:8px;
 </div>
 </div>
 
+
+<div class="skill-category">
+<h3>Data Bases</h3>
+<div class="skill-tags">
+<span class="skill-tag">MySQL</span>
+<span class="skill-tag">PostgreSQL</span>
+<span class="skill-tag">MongoDB</span>
+</div>
+</div>
+
+
+<div class="skill-category">
+<h3>Security</h3>
+<div class="skill-tags">
+<span class="skill-tag">OWASP</span>
+<span class="skill-tag">JWT</span>
+<span class="skill-tag">OAuth2</span>
+</div>
+</div>
+
+<div class="skill-category">
+<h3>Payment Gate</h3>
+<div class="skill-tags">
+<span class="skill-tag">PhonePe</span>
+<span class="skill-tag">PayPal</span>
+<span class="skill-tag">Razorpay</span>
+</div>
+</div>
+
+
+</div>
+</section>
+
+
+<section class="experience-modern">
+<h2>Professional Experience</h2>
+
+<div class="container">
+
+<div class="experience-card">
+
+<div class="exp-header">
+<h3>Backend Developer</h3>
+<span class="exp-duration">Aug 2022 – Present</span>
+</div>
+
+<p class="exp-company">
+VMS Techs, Noida (Uttar Pradesh)
+</p>
+
+<ul class="exp-points">
+<li>Developed scalable Django-based media platforms using Redis & Celery for asynchronous processing.</li>
+
+<li>Built AI avatar generation systems with secure OAuth authentication and payment integrations.</li>
+
+<li>Designed financial tracking and appointment booking platforms with strong access control.</li>
+
+<li>Implemented video & QR processing tools using FFmpeg, OpenCV, and WhatsApp API integrations.</li>
+
+<li>Optimized backend performance and improved system scalability for high concurrent users.</li>
+</ul>
+
+</div>
+
+</div>
+</section>
+
+
+<section class="projects-modern">
+<h2>Project Details</h2>
+
+<div class="container">
+
+<!-- Project 1 -->
+<div class="project-card">
+<h3>Snap Cut</h3>
+<p class="project-tech">
+Django • Redis • PostgreSQL • Celery
+</p>
+
+<p>
+Designed a scalable media processing platform capable of handling
+large file uploads using asynchronous background tasks.
+Implemented Redis & Celery queue system to prevent request blocking
+and improve performance during heavy traffic.
+</p>
+</div>
+
+<!-- Project 2 -->
+<div class="project-card">
+<h3>Dojiwa</h3>
+<p class="project-tech">
+Django • OAuth2 • Razorpay • Redis
+</p>
+
+<p>
+Developed an AI avatar generation platform with secure OAuth login
+and payment integration. Used Redis-based session management and
+asset caching which improved application load speed by nearly 30%.
+</p>
+</div>
+
+<!-- Project 3 -->
+<div class="project-card">
+<h3>Financial Manager (FN)</h3>
+<p class="project-tech">
+PHP • CodeIgniter • MySQL
+</p>
+
+<p>
+Built a financial management system implementing Role-Based Access
+Control (RBAC) to maintain secure data access across multiple
+organizational levels ensuring privacy and integrity.
+</p>
+</div>
+
+<!-- Project 4 -->
+<div class="project-card">
+<h3>Qrtli</h3>
+<p class="project-tech">
+Laravel • Python • PhonePe • AI Integration
+</p>
+
+<p>
+Created an AI-powered QR styling platform integrating Laravel backend
+with Python microservices for real-time QR customization and enhanced
+user interaction.
+</p>
+</div>
+
+</div>
+</section>
+
+
+<section class="education-modern">
+<h2>Education</h2>
+
+<div class="container">
+
+<div class="project-card">
+<h3>B.Techs</h3>
+<p class="project-tech">
+IIMT College of Engineering, Greater Noida
+</p>
+<p class="project-tech">
+Year of Passing: 2018-2022
+</p>
+
+</div>
+
+<div class="project-card">
+<h3>InterMediate</h3>
+<p class="project-tech">
+Prestige InterMediate College, Deoria (Uttar Pradesh)
+</p>
+<p class="project-tech">
+Year of Passing: 2018
+</p>
+</div>
+
+<div class="project-card">
+<h3>High School</h3>
+<p class="project-tech">
+Prestige InterMediate College, Deoria (Uttar Pradesh)
+</p>
+
+<p class="project-tech">
+Year of Passing: 2016
+</p>
+
+</div>
+
 </div>
 </section>
 
 <footer class="footer-modern">
-<div class="footer-icons">
-<img src="https://cdn-icons-png.flaticon.com/512/174/174857.png">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733553.png">
-<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png">
+<div class="profile-actions">
+
+<a href="shiv-ratan.docx" class="cv-btn">⬇ Download CV</a>
+
+<div class="social-icons">
+
+    <a href="https://linkedin.com/in/shiv-ratan-chaurasia-035558227/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+    </a>
+
+    <a href="https://github.com/shivratan20/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+    </a>
+
+    <a href="mailto:shivratanchaurasia03@gmail.com" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB81srFeDr4XXdlLDeaU2Ga3AV6QsUjh4UQA&s" alt="mail">
+    </a>
+
+    <a href="tel:+919319848814" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8OLgR1m8iL3BaVoayTLslIfTFrlnWrI6XzA&s" alt="phone">
+    </a>
+
 </div>
-<p>© 2026 Shiv Ratan Chaurasia. All rights reserved.</p>
+</div>
+<p>© 2026 ShivRatan.dev. All rights reserved.</p>
 </footer>
 
 <!-- CHATBOT -->
@@ -364,6 +815,7 @@ input.value="";
 }
 
 </script>
+
 
 </body>
 </html>
