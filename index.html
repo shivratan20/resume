@@ -467,6 +467,302 @@ padding:8px;
     color:#cbd5e1;
 }
 
+:root{
+--bg:#020617;
+--surface:#0f172a;
+--primary:#38bdf8;
+--neon:#22d3ee;
+--text:#e2e8f0;
+--dim:#94a3b8;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Plus Jakarta Sans',sans-serif;
+background:
+radial-gradient(circle at top,#020617,#000);
+color:var(--text);
+line-height:1.6;
+overflow-x:hidden;
+}
+
+/* ======================
+GLOBAL CONTAINER
+======================*/
+.container{
+max-width:1150px;
+margin:auto;
+padding:0 20px;
+position:relative;
+z-index:2;
+}
+
+/* ======================
+HOLOGRAM BACKGROUND GRID
+======================*/
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(56,189,248,.05) 1px,transparent 1px),
+linear-gradient(90deg,rgba(56,189,248,.05) 1px,transparent 1px);
+background-size:60px 60px;
+animation:gridMove 25s linear infinite;
+z-index:0;
+}
+
+@keyframes gridMove{
+0%{transform:translateY(0)}
+100%{transform:translateY(60px)}
+}
+
+/* ======================
+NAV
+======================*/
+nav{
+position:sticky;
+top:0;
+background:#020617cc;
+backdrop-filter:blur(12px);
+padding:18px;
+border-bottom:1px solid rgba(56,189,248,.2);
+}
+
+/* ======================
+SECTION BASE
+======================*/
+section{
+padding:100px 0;
+position:relative;
+}
+
+/* ======================
+HERO
+======================*/
+.hero{
+display:grid;
+grid-template-columns:1.1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+/* TERMINAL */
+.terminal{
+background:#000;
+border-radius:14px;
+padding:20px;
+height:220px;
+font-family:'Fira Code';
+box-shadow:
+0 0 30px rgba(34,211,238,.4);
+}
+
+.log{color:#22d3ee}
+
+/* ======================
+PROFILE GLASS CARD
+======================*/
+.profile-card{
+background:rgba(15,23,42,.6);
+backdrop-filter:blur(20px);
+padding:28px;
+border-radius:18px;
+text-align:center;
+border:1px solid rgba(56,189,248,.2);
+box-shadow:
+0 20px 60px rgba(0,0,0,.6);
+transition:.5s;
+}
+
+.profile-card:hover{
+transform:translateY(-8px) rotateX(6deg);
+}
+
+.profile-img{
+width:160px;
+height:160px;
+border-radius:50%;
+border:4px solid var(--primary);
+}
+
+/* ======================
+AI HOLOGRAM IMAGE
+======================*/
+.ai-hologram{
+perspective:1200px;
+text-align:center;
+}
+
+.holo-frame{
+position:relative;
+display:inline-block;
+animation:float 6s ease-in-out infinite;
+}
+
+.holo-image{
+width:100%;
+max-width:850px;
+border-radius:20px;
+transform:
+rotateX(8deg)
+rotateY(-8deg);
+box-shadow:
+0 0 60px rgba(255,0,200,.4),
+0 0 120px rgba(56,189,248,.3);
+}
+
+/* scanning light */
+.scan-line{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+transparent,
+rgba(56,189,248,.3),
+transparent);
+animation:scan 4s linear infinite;
+}
+
+@keyframes float{
+50%{transform:translateY(-20px)}
+}
+
+@keyframes scan{
+0%{transform:translateY(-100%)}
+100%{transform:translateY(100%)}
+}
+
+/* ======================
+SKILLS 3D
+======================*/
+.skills-modern{
+perspective:1000px;
+}
+
+.skills-modern .container{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.skill-category{
+background:rgba(15,23,42,.6);
+backdrop-filter:blur(15px);
+padding:25px;
+border-radius:16px;
+transition:.4s;
+border:1px solid rgba(56,189,248,.2);
+}
+
+.skill-category:hover{
+transform:
+rotateX(8deg)
+rotateY(-8deg)
+translateY(-10px);
+
+box-shadow:
+0 0 40px rgba(56,189,248,.4);
+}
+
+.skill-tag{
+background:#16324a;
+padding:10px 18px;
+border-radius:10px;
+color:#38bdf8;
+transition:.3s;
+}
+
+.skill-tag:hover{
+background:#38bdf8;
+color:#000;
+box-shadow:0 0 20px #38bdf8;
+}
+
+/* ======================
+PROJECTS HOLOGRAM CARD
+======================*/
+.project-card{
+background:rgba(30,41,59,.6);
+backdrop-filter:blur(15px);
+padding:28px;
+border-radius:16px;
+border:1px solid rgba(56,189,248,.2);
+transition:.4s;
+}
+
+.project-card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:
+0 0 45px rgba(56,189,248,.35);
+}
+
+.project-tech{
+color:var(--primary);
+font-weight:600;
+}
+
+/* ======================
+EXPERIENCE
+======================*/
+.experience-card{
+background:rgba(15,23,42,.6);
+backdrop-filter:blur(15px);
+padding:35px;
+border-radius:16px;
+border-left:5px solid var(--primary);
+transition:.4s;
+}
+
+.experience-card:hover{
+box-shadow:
+0 0 40px rgba(56,189,248,.3);
+}
+
+/* ======================
+EDUCATION
+======================*/
+.education-card{
+background:rgba(15,23,42,.6);
+backdrop-filter:blur(15px);
+padding:28px;
+border-radius:14px;
+border-left:4px solid var(--primary);
+transition:.4s;
+}
+
+.education-card:hover{
+transform:translateY(-8px);
+box-shadow:
+0 0 35px rgba(56,189,248,.3);
+}
+
+/* ======================
+FOOTER
+======================*/
+.footer-modern{
+background:#020617;
+text-align:center;
+padding:50px;
+border-top:1px solid rgba(56,189,248,.2);
+}
+
+/* ======================
+RESPONSIVE
+======================*/
+@media(max-width:900px){
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+}
+
 </style>
 </head>
 
@@ -517,6 +813,16 @@ padding:8px;
 </div>
 
 </div>
+</div>
+
+</div>
+</section>
+<section class="ai-hologram">
+<div class="container">
+
+<div class="holo-frame">
+<img src="coder.jpg" class="holo-image">
+<div class="scan-line"></div>
 </div>
 
 </div>
@@ -762,7 +1068,6 @@ Year of Passing: 2016
 <p>© 2026 ShivRatan.dev. All rights reserved.</p>
 </footer>
 
-<!-- CHATBOT -->
 <div id="chat-toggle" onclick="toggleChat()">🤖</div>
 
 <div id="chatbot">
@@ -777,7 +1082,6 @@ Year of Passing: 2016
 
 <script>
 
-/* TERMINAL */
 const terminal=document.getElementById("terminal");
 ["Booting...","Loading Django","Connecting Redis","AI Ready 🚀"]
 .forEach((t,i)=>{
@@ -789,7 +1093,7 @@ terminal.appendChild(d);
 },i*800);
 });
 
-/* CHAT */
+
 let opened=false;
 
 function toggleChat(){
@@ -813,9 +1117,6 @@ body.innerHTML+=`<div class='msg user'>${msg}</div>`;
 body.innerHTML+=`<div class='msg bot'>Thanks! Ask about skills or resume.</div>`;
 input.value="";
 }
-
 </script>
-
-
 </body>
 </html>
