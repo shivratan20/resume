@@ -4,78 +4,160 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shiv Ratan Chaurasia | AI Backend Engineer</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#020617;--surface:#0f172a;--primary:#38bdf8;--accent:#22d3ee;--text:#e2e8f0;--dim:#94a3b8}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.container{max-width:1150px;margin:auto;padding:0 20px}
 
-nav{position:sticky;top:0;background:#020617e6;backdrop-filter:blur(10px);z-index:10}
-.nav-wrap{display:flex;justify-content:space-between;align-items:center;padding:15px 0}
-.logo{font-weight:800;font-size:18px}
-.menu{display:flex;gap:20px}
-.menu a{text-decoration:none;color:var(--dim);font-weight:600}
-.menu a:hover{color:var(--primary)}
-.menu-btn{display:none;font-size:22px;cursor:pointer}
-
-section{padding:80px 0}
-.hero{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:50px}
-
-.profile-3d{perspective:1000px}
-.profile-card{background:var(--surface);padding:20px;border-radius:18px;text-align:center;transform-style:preserve-3d;transition:0.5s;box-shadow:0 20px 40px rgba(0,0,0,0.4)}
-.profile-card:hover{transform:rotateY(10deg) rotateX(6deg)}
-.profile-img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid var(--primary);margin-bottom:15px}
-.coder-img{width:100%;margin-top:15px;opacity:.9}
-
-/* TERMINAL */
-.terminal{background:#000;border-radius:12px;padding:20px;font-family:'Fira Code',monospace;width:100%;box-shadow:0 0 25px #0ea5e955;margin-bottom:20px;height:220px;overflow:auto}
-.log{color:#22d3ee;font-size:14px;margin-bottom:6px}
-.progress{height:6px;background:#111;border-radius:10px;margin:8px 0;overflow:hidden}
-.progress span{display:block;height:100%;background:#38bdf8;width:0%}
-.cursor{display:inline-block;width:8px;height:16px;background:#38bdf8;animation:blink 1s infinite}
-@keyframes blink{50%{opacity:0}}
-
-.title{font-size:2.6rem;font-weight:800;margin-bottom:10px}
-.subtitle{color:var(--primary);margin-bottom:15px}
-.ai-badge{display:inline-block;background:#0ea5e920;color:#38bdf8;padding:6px 14px;border-radius:50px;font-size:.8rem;margin-bottom:10px}
-.desc{color:var(--dim)}
-
-.grid{display:grid;gap:20px}
-.projects{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.card{background:var(--surface);padding:22px;border-radius:12px;border:1px solid transparent;transition:.3s}
-.card:hover{border-color:var(--primary);transform:translateY(-4px)}
-button{margin-top:10px;padding:8px 14px;border:none;background:var(--primary);color:#000;border-radius:6px;font-weight:600;cursor:pointer}
-
-.skill{margin-bottom:14px}
-.bar{height:8px;background:#1e293b;border-radius:20px;overflow:hidden}
-.fill{height:100%;background:linear-gradient(90deg,#38bdf8,#22d3ee)}
-
-.blog{display:grid;gap:20px}
-footer{text-align:center;padding:40px 0;color:var(--dim)}
-
-@media(max-width:900px){
-.hero{grid-template-columns:1fr}
-.menu{display:none;flex-direction:column;background:#020617;position:absolute;right:20px;top:60px;padding:15px;border-radius:8px}
-.menu.show{display:flex}
-.menu-btn{display:block}
-.title{font-size:2rem}
-section{padding:60px 0}
+:root{
+--bg:#020617;
+--surface:#0f172a;
+--primary:#38bdf8;
+--text:#e2e8f0;
+--dim:#94a3b8;
 }
 
+*{margin:0;padding:0;box-sizing:border-box}
 
-/* ===== Chatbot (Added without removing existing code) ===== */
-#chatbot{position:fixed;bottom:20px;right:20px;width:320px;background:#0f172a;border-radius:12px;overflow:hidden;box-shadow:0 0 20px #000;z-index:9999}
-#chat-header{background:#38bdf8;color:#000;padding:10px;font-weight:bold}
-#chat-body{height:250px;overflow:auto;padding:10px}
-.msg{margin:6px 0}
-.user{color:#38bdf8}
-.bot{color:#22d3ee}
-#chat-input{display:flex;border-top:1px solid #111}
-#chat-input input{flex:1;padding:8px;background:#020617;border:none;color:white}
-#chat-input button{background:#38bdf8;border:none;padding:8px;cursor:pointer}
+body{
+font-family:'Plus Jakarta Sans';
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+}
 
-/* ===== Floating Chat Icon ===== */
+.container{
+max-width:1150px;
+margin:auto;
+padding:0 20px;
+}
+
+/* NAV */
+nav{
+position:sticky;
+top:0;
+background:#020617e6;
+padding:15px;
+}
+
+/* HERO */
+section{padding:80px 0}
+
+.hero{
+display:grid;
+grid-template-columns:1.1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+/* TERMINAL */
+.terminal{
+background:#000;
+border-radius:12px;
+padding:20px;
+height:220px;
+overflow:auto;
+font-family:'Fira Code';
+box-shadow:0 0 25px #0ea5e955;
+}
+
+.log{color:#22d3ee}
+
+/* PROFILE */
+.profile-card{
+background:var(--surface);
+padding:25px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+.profile-img{
+width:160px;
+height:160px;
+border-radius:50%;
+border:4px solid var(--primary);
+object-fit:cover;
+margin-bottom:15px;
+}
+
+/* PROFILE ACTION */
+.profile-actions{text-align:center;margin-top:20px}
+
+.cv-btn{
+background:#38bdf8;
+color:#000;
+padding:12px 25px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+display:inline-block;
+margin-bottom:15px;
+}
+
+.social-icons{
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+.social-icons img{
+width:28px;
+filter:invert(1);
+opacity:.8;
+}
+
+/* SKILLS MODERN */
+.skills-modern{
+background:#020c22;
+padding:70px 20px;
+}
+
+.skills-modern h2{
+text-align:center;
+color:#38bdf8;
+margin-bottom:40px;
+}
+
+.skill-category{margin-bottom:30px}
+
+.skill-category h3{margin-bottom:15px}
+
+.skill-tags{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+}
+
+.skill-tag{
+background:#16324a;
+padding:10px 18px;
+border-radius:10px;
+color:#38bdf8;
+font-weight:600;
+}
+
+/* FOOTER */
+.footer-modern{
+background:#0f172a;
+padding:40px;
+text-align:center;
+}
+
+.footer-icons{
+display:flex;
+justify-content:center;
+gap:25px;
+margin-bottom:15px;
+}
+
+.footer-icons img{
+width:28px;
+filter:invert(1);
+opacity:.7;
+}
+
+/* CHATBOT */
 #chat-toggle{
 position:fixed;
 bottom:20px;
@@ -87,20 +169,14 @@ border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:28px;
 cursor:pointer;
-z-index:9999;
 animation:flip 3s infinite;
-box-shadow:0 0 20px #38bdf8;
 }
 
 @keyframes flip{
-0%{transform:rotateY(0)}
 50%{transform:rotateY(180deg)}
-100%{transform:rotateY(360deg)}
 }
 
-/* ===== Chat Window ===== */
 #chatbot{
 position:fixed;
 bottom:95px;
@@ -108,17 +184,14 @@ right:20px;
 width:320px;
 background:#0f172a;
 border-radius:12px;
-overflow:hidden;
-box-shadow:0 0 20px #000;
 display:none;
-z-index:9999;
+overflow:hidden;
 }
 
 #chat-header{
 background:#38bdf8;
 color:#000;
 padding:10px;
-font-weight:bold;
 cursor:pointer;
 }
 
@@ -132,11 +205,7 @@ padding:10px;
 .user{color:#38bdf8}
 .bot{color:#22d3ee}
 
-#chat-input{
-display:flex;
-border-top:1px solid #111;
-}
-
+#chat-input{display:flex}
 #chat-input input{
 flex:1;
 padding:8px;
@@ -149,232 +218,151 @@ color:white;
 background:#38bdf8;
 border:none;
 padding:8px;
-cursor:pointer;
-}
-#chat-options{
-padding:8px;
-border-top:1px solid #111;
 }
 
-#chat-options select{
-width:100%;
-padding:8px;
-background:#020617;
-color:white;
-border:none;
+@media(max-width:900px){
+.hero{grid-template-columns:1fr}
 }
+
 </style>
 </head>
+
 <body>
-<nav>
-<div class="container nav-wrap">
-<div class="logo">ShivRatan.dev</div>
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-<div class="menu" id="menu">
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="#skills">Skills</a>
-<a href="#blog">Blog</a>
-</div>
-</div>
+
+<nav class="container">
+🚀 ShivRatan.dev
 </nav>
 
-<section id="home">
+<section>
 <div class="container hero">
+
 <div>
 <div class="terminal" id="terminal"></div>
-<h1 class="title">Hi 👋 I'm Shiv Ratan</h1>
-<p class="subtitle">AI‑Focused Backend & Full Stack Engineer ⚙️</p>
-<div class="ai-badge">🤖 Async Systems • 🔐 Secure APIs • ⚡ Scalable Architecture</div>
-<p class="desc">I build scalable backend systems, AI-powered tools and enterprise-ready web applications using Django, Laravel, Redis and modern async architectures.</p>
+<h1>Hi 👋 I'm Shiv Ratan</h1>
+<p>AI Backend & Full Stack Engineer</p>
 </div>
 
-<div class="profile-3d">
+<div>
 <div class="profile-card">
-<img src="profile.png" alt="Profile Photo" class="profile-img">
-<h3>👨‍💻 Shiv Ratan Chaurasia</h3>
-<p class="desc">Backend Engineer • AI Developer • System Architect</p>
-<img src="coder.jpg" alt="3D coder illustration" class="coder-img">
+<img src="profile.png" class="profile-img">
+<h3>Shiv Ratan Chaurasia</h3>
+<p>Backend Engineer • AI Developer</p>
+
+<div class="profile-actions">
+<a href="resume.pdf" class="cv-btn">⬇ Download CV</a>
+
+<div class="social-icons">
+<img src="https://cdn-icons-png.flaticon.com/512/174/174857.png">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733553.png">
+<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png">
+</div>
+</div>
+
 </div>
 </div>
 
 </div>
 </section>
 
-<section id="about"><div class="container"><h2>👨‍💻 About Me</h2><p class="desc">With 3+ years of experience, I specialize in async architectures, AI integrations, secure APIs, payment systems, and media automation using FFmpeg & OpenCV.</p></div></section>
+<!-- SKILLS -->
+<section class="skills-modern">
+<h2>Technical Skills</h2>
 
-<section id="projects"><div class="container"><h2>🚀 Featured Projects</h2><div class="grid projects">
-<div class="card"><h3>🎬 SnapCut</h3><p>Async media processing platform powered by Celery & Redis.</p><button>View Demo</button></div>
-<div class="card"><h3>🧑‍🎨 Dojiwa</h3><p>AI avatar generation with OAuth & payments.</p><button>View Demo</button></div>
-<div class="card"><h3>💰 Financial Manager</h3><p>Secure RBAC financial tracking system.</p><button>View Demo</button></div>
-<div class="card"><h3>🔳 Qrtli</h3><p>AI QR styling engine integrating Laravel & Python.</p><button>View Demo</button></div>
-</div></div></section>
+<div class="container">
 
-<section id="skills"><div class="container"><h2>⚡ Technical Skills</h2>
-<div class="skill"><label>🐍 Django</label><div class="bar"><div class="fill" style="width:95%"></div></div></div>
-<div class="skill"><label>🧩 Laravel</label><div class="bar"><div class="fill" style="width:90%"></div></div></div>
-<div class="skill"><label>⚙️ Python</label><div class="bar"><div class="fill" style="width:92%"></div></div></div>
-<div class="skill"><label>🚀 Redis & Celery</label><div class="bar"><div class="fill" style="width:88%"></div></div></div>
-<div class="skill"><label>🤖 AI / OpenCV / FFmpeg</label><div class="bar"><div class="fill" style="width:85%"></div></div></div>
-</div></section>
+<div class="skill-category">
+<h3>Languages</h3>
+<div class="skill-tags">
+<span class="skill-tag">Python</span>
+<span class="skill-tag">HTML</span>
+<span class="skill-tag">JavaScript</span>
+<span class="skill-tag">SQL</span>
+</div>
+</div>
 
-<section id="blog"><div class="container"><h2>🧠 Developer Blog</h2><div class="blog">
-<div class="card"><h3>⚡ Designing Async Django Systems</h3><p>Scaling heavy media apps using Celery & Redis.</p></div>
-<div class="card"><h3>🤖 AI Integration in Web Apps</h3><p>Connecting Python AI services with Laravel apps.</p></div>
-</div></div></section>
+<div class="skill-category">
+<h3>Backend</h3>
+<div class="skill-tags">
+<span class="skill-tag">Django</span>
+<span class="skill-tag">Laravel</span>
+<span class="skill-tag">Redis</span>
+<span class="skill-tag">Celery</span>
+</div>
+</div>
 
-<footer>✨ © 2026 Shiv Ratan Chaurasia • AI Backend Engineer</footer>
+<div class="skill-category">
+<h3>AI / Media</h3>
+<div class="skill-tags">
+<span class="skill-tag">OpenCV</span>
+<span class="skill-tag">FFmpeg</span>
+<span class="skill-tag">OCR</span>
+</div>
+</div>
 
-<script>
-function toggleMenu(){document.getElementById('menu').classList.toggle('show')}
+</div>
+</section>
 
-const terminal=document.getElementById('terminal');
-const steps=[
-"$ booting developer environment...",
-"✔ Loading Django modules",
-"✔ Connecting Redis cache",
-"✔ Initializing AI services",
-"✔ Securing OAuth authentication",
-"✔ Deploying scalable architecture",
-"🚀 System Ready — Welcome Recruiter"
-];
+<footer class="footer-modern">
+<div class="footer-icons">
+<img src="https://cdn-icons-png.flaticon.com/512/174/174857.png">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733553.png">
+<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png">
+</div>
+<p>© 2026 Shiv Ratan Chaurasia. All rights reserved.</p>
+</footer>
 
-let i=0;
-function runTerminal(){
- if(i<steps.length){
-  const line=document.createElement('div');
-  line.className='log';
-  line.textContent=steps[i];
-  terminal.appendChild(line);
-  terminal.scrollTop=terminal.scrollHeight;
-  i++;
-  setTimeout(runTerminal,900);
- }
-}
-runTerminal();
-</script>
-
-
-<!-- Floating Icon -->
+<!-- CHATBOT -->
 <div id="chat-toggle" onclick="toggleChat()">🤖</div>
 
-<!-- Chat Window -->
 <div id="chatbot">
+<div id="chat-header" onclick="toggleChat()">Ask ShivRatan AI</div>
+<div id="chat-body"></div>
 
-  <div id="chat-header" onclick="toggleChat()">
-    🤖 Ask ShivRatan AI
-  </div>
-
-  <div id="chat-body"></div>
-
-  <!-- Question Dropdown -->
-  <div id="chat-options">
-      <select onchange="quickQuestion(this.value)">
-          <option value="">💬 Ask something...</option>
-          <option value="resume">📄 Download Resume</option>
-          <option value="about">👨‍💻 About ShivRatan</option>
-          <option value="personal">🧑 Personal Information</option>
-          <option value="education">🎓 Educational Background</option>
-          <option value="location">📍 Current City & State</option>
-          <option value="skills">⚡ Technical Skills</option>
-      </select>
-  </div>
-
-  <div id="chat-input">
-    <input id="userInput" placeholder="Type your question..." />
-    <button onclick="sendMessage()">Send</button>
-  </div>
-
+<div id="chat-input">
+<input id="userInput">
+<button onclick="sendMessage()">Send</button>
+</div>
 </div>
 
 <script>
-let chatbotOpened=false;
+
+/* TERMINAL */
+const terminal=document.getElementById("terminal");
+["Booting...","Loading Django","Connecting Redis","AI Ready 🚀"]
+.forEach((t,i)=>{
+setTimeout(()=>{
+let d=document.createElement("div");
+d.className="log";
+d.textContent=t;
+terminal.appendChild(d);
+},i*800);
+});
+
+/* CHAT */
+let opened=false;
 
 function toggleChat(){
- const bot=document.getElementById("chatbot");
+let bot=document.getElementById("chatbot");
+bot.style.display=bot.style.display==="block"?"none":"block";
 
- if(bot.style.display==="block"){
-   bot.style.display="none";
- }else{
-   bot.style.display="block";
-
-   // show welcome only first time
-   if(!chatbotOpened){
-      welcomeMessage();
-      chatbotOpened=true;
-   }
- }
+if(!opened){
+document.getElementById("chat-body").innerHTML=
+"<div class='msg bot'>Welcome to ShivRatan AI Assistant 👋</div>";
+opened=true;
 }
-
-/* ===== Welcome Message ===== */
-function welcomeMessage(){
-
- const body=document.getElementById("chat-body");
-
- body.innerHTML+=`
- <div class='msg bot'>
- 🤖 Welcome to AI Chatbot of <b>ShivRatan Chaurasia</b><br><br>
- You can ask me anything about:
- <br>✅ Resume
- <br>✅ Skills
- <br>✅ Experience
- <br>✅ Education
- <br>✅ Personal Details
- <br><br>
-👇 Select a question below
- </div>`;
-}
-
-/* ===== Dropdown Questions ===== */
-
-function quickQuestion(value){
-
- if(!value) return;
-
- const responses={
- resume:"📄 You can download my resume here: <br><a href='resume.pdf' target='_blank'>Download Resume</a>",
- about:"👨‍💻 Shiv Ratan Chaurasia is an AI Backend Engineer with 3+ years experience building scalable Django & AI platforms.",
- personal:"🧑 Name: Shiv Ratan Chaurasia<br>Role: Backend & AI Engineer<br>Experience: 3+ Years",
- education:"🎓 B.Tech in Electronics & Communication Engineering from IIMT Greater Noida.",
- location:"📍 Currently based in Noida, Uttar Pradesh, India.",
- skills:"⚡ Django, Laravel, Redis, Celery, OpenCV, FFmpeg, REST APIs & AI Integrations."
- };
-
- const body=document.getElementById("chat-body");
-
- body.innerHTML+=`<div class='msg user'>👤 ${value}</div>`;
- body.innerHTML+=`<div class='msg bot'>${responses[value]}</div>`;
-
- body.scrollTop=body.scrollHeight;
 }
 
 function sendMessage(){
+let input=document.getElementById("userInput");
+let msg=input.value;
+if(!msg)return;
 
- const inputEl=document.getElementById("userInput");
- const input=inputEl.value.toLowerCase();
-
- if(!input) return;
-
- const body=document.getElementById("chat-body");
-
- body.innerHTML+=`<div class='msg user'>👤 ${input}</div>`;
-
- let reply="🤖 Thanks! Please select from dropdown for accurate info.";
-
- if(input.includes("resume"))
- reply="📄 Resume available in dropdown above.";
-
- if(input.includes("skills"))
- reply="⚡ Django, Laravel, Redis, Celery, AI Integration.";
-
- setTimeout(()=>{
-   body.innerHTML+=`<div class='msg bot'>${reply}</div>`;
-   body.scrollTop=body.scrollHeight;
- },500);
-
- inputEl.value="";
+let body=document.getElementById("chat-body");
+body.innerHTML+=`<div class='msg user'>${msg}</div>`;
+body.innerHTML+=`<div class='msg bot'>Thanks! Ask about skills or resume.</div>`;
+input.value="";
 }
+
 </script>
 
 </body>
