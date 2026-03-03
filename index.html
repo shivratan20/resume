@@ -303,8 +303,29 @@ padding:8px;
 /* GRID */
 .education-modern .container{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:30px;
+}
+
+@media(max-width:768px){
+
+.education-modern{
+    padding:60px 15px;
+}
+
+.education-modern .container{
+    grid-template-columns:1fr;
+}
+
+.education-card{
+    padding:20px;
+}
+
+.education-modern .container{
+    max-width:900px;
+    margin:auto;
+}
+
 }
 
 /* CARD */
@@ -591,30 +612,46 @@ border-radius:50%;
 border:4px solid var(--primary);
 }
 
-/* ======================
-AI HOLOGRAM IMAGE
-======================*/
 .ai-hologram{
-perspective:1200px;
-text-align:center;
+    perspective:1200px;
+    text-align:center;
+    display:flex;
+    justify-content:center;
 }
 
 .holo-frame{
-position:relative;
-display:inline-block;
-animation:float 6s ease-in-out infinite;
+    position:relative;
+    display:inline-block;
+    animation:float 6s ease-in-out infinite;
+    max-width:100%;
 }
 
 .holo-image{
-width:100%;
-max-width:850px;
-border-radius:20px;
-transform:
-rotateX(8deg)
-rotateY(-8deg);
-box-shadow:
-0 0 60px rgba(255,0,200,.4),
-0 0 120px rgba(56,189,248,.3);
+    width:100%;
+    max-width:520px;   /* 🔥 reduced from 850px */
+    height:auto;
+    border-radius:20px;
+
+    transform:
+    rotateX(8deg)
+    rotateY(-8deg);
+
+    box-shadow:
+    0 0 40px rgba(255,0,200,.3),
+    0 0 80px rgba(56,189,248,.25);
+}
+
+@media(max-width:1024px){
+    .holo-image{
+        max-width:420px;
+    }
+}
+
+@media(max-width:768px){
+    .holo-image{
+        max-width:320px;
+        transform:rotateX(4deg) rotateY(-4deg); /* reduce 3D on mobile */
+    }
 }
 
 /* scanning light */
@@ -821,8 +858,8 @@ text-align:center;
 <div class="container">
 
 <div class="holo-frame">
-<img src="coder.jpg" class="holo-image">
-<div class="scan-line"></div>
+    <img id="holoImage" src="gif1.gif" class="holo-image">
+    <div class="scan-line"></div>
 </div>
 
 </div>
@@ -1117,6 +1154,29 @@ body.innerHTML+=`<div class='msg user'>${msg}</div>`;
 body.innerHTML+=`<div class='msg bot'>Thanks! Ask about skills or resume.</div>`;
 input.value="";
 }
+
+const gifs = [
+    "gif1.gif",
+    "gif2.gif",
+    "gif3.gif",
+    "gif4.gif",
+    "gif5.gif",
+    "gif6.gif",
+    "gif7.gif",
+    "gif8.gif",
+    "gif9.gif",
+    "gif10.gif"
+];
+
+let holoIndex = 0;
+const holoImage = document.getElementById("holoImage");
+
+setInterval(() => {
+    holoIndex = (holoIndex + 1) % gifs.length;
+    holoImage.src = gifs[holoIndex];
+}, 2000);
+
+
 </script>
 </body>
 </html>
