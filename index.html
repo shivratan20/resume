@@ -588,7 +588,9 @@ padding:14px;
 }
 
 .log{
-word-break:break-word;   /* prevents ugly overflow */
+color:#22d3ee;
+white-space:normal;
+word-break:break-word;
 }
 
 }
@@ -810,7 +812,7 @@ text-align:center;
 }
 
 .contact-modern{
-background:#0f172a;
+background:#0b1220; /* solid stable dark */
 padding:80px 20px;
 text-align:center;
 }
@@ -821,18 +823,69 @@ margin-bottom:30px;
 }
 
 .contact-card{
-background:rgba(15,23,42,.6);
+background:#0f172a;   /* remove transparent glass */
 padding:30px;
-border-radius:15px;
+border-radius:16px;
 max-width:600px;
 margin:auto;
-box-shadow:0 0 30px rgba(56,189,248,.2);
+border:1px solid rgba(56,189,248,.2);
+box-shadow:0 0 30px rgba(56,189,248,.15);
+}
+
+.contact-card{
+background:rgba(15,23,42,0.85);  /* less transparent */
+backdrop-filter:blur(12px);
+}
+
+.contact-card a {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    color: #38bdf8;
+}
+
+.contact-card a {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    color: #38bdf8;
 }
 
 .contact-card p{
 margin-bottom:12px;
 font-size:16px;
 color:#e2e8f0;
+}
+
+.contact-card p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.contact-card a {
+    word-break: break-all;
+}
+
+.email-text {
+    color: #38bdf8;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+@media(max-width:768px){
+
+.contact-card {
+    padding:20px;
+}
+
+.contact-card p {
+    font-size:14px;
+}
+
 }
 </style>
 </head>
@@ -906,8 +959,17 @@ color:#e2e8f0;
 
 <div class="contact-card">
 <p><strong>👤 Name:</strong> Shiv Ratan Chaurasia</p>
-<p><strong>📱 Mobile:</strong> 9319848814</p>
-<p><strong>📧 Email:</strong> shivratanchaurasia03@gmail.com</p>
+<p>
+<strong>📱 Mobile:</strong> 
+<a href="tel:+919319848814">9319848814</a>
+</p>
+
+<p>
+<strong>📧 Email:</strong> 
+<a href="mailto:shivratanchaurasia03@gmail.com">
+shivratanchaurasia03@gmail.com
+</a>
+</p>
 <p><strong>📍 Location:</strong> Noida, Uttar Pradesh, India</p>
 </div>
 
