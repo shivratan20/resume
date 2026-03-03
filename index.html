@@ -9,6 +9,9 @@
 
 <style>
 
+.holo-image{
+    transition: opacity .5s ease;
+}
 :root{
 --bg:#020617;
 --surface:#0f172a;
@@ -50,15 +53,17 @@ gap:50px;
 align-items:center;
 }
 
-/* TERMINAL */
 .terminal{
 background:#000;
-border-radius:12px;
-padding:20px;
-height:220px;
+border-radius:14px;
+padding:18px;
+min-height:160px;   /* changed from fixed height */
+max-height:260px;
 overflow:auto;
 font-family:'Fira Code';
-box-shadow:0 0 25px #0ea5e955;
+box-shadow:0 0 30px rgba(34,211,238,.4);
+font-size:15px;
+line-height:1.6;
 }
 
 .log{color:#22d3ee}
@@ -573,15 +578,19 @@ gap:50px;
 align-items:center;
 }
 
-/* TERMINAL */
+@media(max-width:768px){
+
 .terminal{
-background:#000;
-border-radius:14px;
-padding:20px;
-height:220px;
-font-family:'Fira Code';
-box-shadow:
-0 0 30px rgba(34,211,238,.4);
+min-height:140px;
+max-height:200px;
+font-size:13px;
+padding:14px;
+}
+
+.log{
+word-break:break-word;   /* prevents ugly overflow */
+}
+
 }
 
 .log{color:#22d3ee}
@@ -800,6 +809,31 @@ text-align:center;
 }
 }
 
+.contact-modern{
+background:#0f172a;
+padding:80px 20px;
+text-align:center;
+}
+
+.contact-modern h2{
+color:#38bdf8;
+margin-bottom:30px;
+}
+
+.contact-card{
+background:rgba(15,23,42,.6);
+padding:30px;
+border-radius:15px;
+max-width:600px;
+margin:auto;
+box-shadow:0 0 30px rgba(56,189,248,.2);
+}
+
+.contact-card p{
+margin-bottom:12px;
+font-size:16px;
+color:#e2e8f0;
+}
 </style>
 </head>
 
@@ -860,6 +894,21 @@ text-align:center;
 <div class="holo-frame">
     <img id="holoImage" src="gif1.gif" class="holo-image">
     <div class="scan-line"></div>
+</div>
+
+</div>
+</section>
+
+
+<section class="contact-modern">
+<div class="container">
+<h2>📞 Contact Me</h2>
+
+<div class="contact-card">
+<p><strong>👤 Name:</strong> Shiv Ratan Chaurasia</p>
+<p><strong>📱 Mobile:</strong> 9319848814</p>
+<p><strong>📧 Email:</strong> shivratanchaurasia03@gmail.com</p>
+<p><strong>📍 Location:</strong> Noida, Uttar Pradesh, India</p>
 </div>
 
 </div>
@@ -1119,16 +1168,34 @@ Year of Passing: 2016
 
 <script>
 
-const terminal=document.getElementById("terminal");
-["Booting...","Loading Django","Connecting Redis","AI Ready 🚀"]
-.forEach((t,i)=>{
-setTimeout(()=>{
-let d=document.createElement("div");
-d.className="log";
-d.textContent=t;
-terminal.appendChild(d);
-},i*800);
+
+const terminal = document.getElementById("terminal");
+
+const bootLogs = [
+"Booting ShivRatan AI Portfolio...",
+"Loading Django Framework...",
+"Connecting Redis & Celery...",
+"Initializing FastAPI Services...",
+"Loading OpenCV & AI Modules...",
+"Securing APIs with JWT & OAuth2...",
+"Connecting MySQL / PostgreSQL / MongoDB...",
+"Payment Gateways Integrated (Razorpay / PayPal / PhonePe)...",
+"Contact Loaded ✔",
+"Mobile: 9319848814",
+"Email: shivratanchaurasia03@gmail.com",
+"🚀 AI System Ready"
+];
+
+bootLogs.forEach((text, index) => {
+    setTimeout(() => {
+        const line = document.createElement("div");
+        line.className = "log";
+        line.textContent = text;
+        terminal.appendChild(line);
+        terminal.scrollTop = terminal.scrollHeight;
+    }, index * 700);
 });
+
 
 
 let opened=false;
@@ -1165,7 +1232,8 @@ const gifs = [
     "gif7.gif",
     "gif8.gif",
     "gif9.gif",
-    "gif10.gif"
+    "gif10.gif",
+    "newimg.png"
 ];
 
 let holoIndex = 0;
