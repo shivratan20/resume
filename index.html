@@ -3,1310 +3,617 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shiv Ratan Chaurasia | AI Backend Engineer | Full Stack Developer Portfolio">
 <title>Shiv Ratan Chaurasia | AI Backend Engineer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
 <style>
-
-.holo-image{
-    transition: opacity .5s ease;
-}
-:root{
---bg:#020617;
---surface:#0f172a;
---primary:#38bdf8;
---text:#e2e8f0;
---dim:#94a3b8;
-}
-
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-font-family:'Plus Jakarta Sans';
-background:var(--bg);
-color:var(--text);
-line-height:1.6;
-}
-
-.container{
-max-width:1150px;
-margin:auto;
-padding:0 20px;
-}
-
-/* NAV */
-nav{
-position:sticky;
-top:0;
-background:#020617e6;
-padding:15px;
-}
-
-/* HERO */
-section{padding:80px 0}
-
-.hero{
-display:grid;
-grid-template-columns:1.1fr 1fr;
-gap:50px;
-align-items:center;
-}
-
-.terminal{
-background:#000;
-border-radius:14px;
-padding:18px;
-min-height:160px;   /* changed from fixed height */
-max-height:260px;
-overflow:auto;
-font-family:'Fira Code';
-box-shadow:0 0 30px rgba(34,211,238,.4);
-font-size:15px;
-line-height:1.6;
-}
-
-.log{color:#22d3ee}
-
-/* PROFILE */
-.profile-card{
-background:var(--surface);
-padding:25px;
-border-radius:18px;
-text-align:center;
-box-shadow:0 20px 40px rgba(0,0,0,.4);
-}
-
-.profile-img{
-width:160px;
-height:160px;
-border-radius:50%;
-border:4px solid var(--primary);
-object-fit:cover;
-margin-bottom:15px;
-}
-
-/* PROFILE ACTION */
-.profile-actions{text-align:center;margin-top:20px}
-
-.cv-btn{
-background:#38bdf8;
-color:#000;
-padding:12px 25px;
-border-radius:10px;
-text-decoration:none;
-font-weight:600;
-display:inline-block;
-margin-bottom:15px;
-}
-
-.social-icons{
-display:flex;
-justify-content:center;
-gap:20px;
-}
-
-.social-icons img{
-width:28px;
-filter:invert(1);
-opacity:.8;
-}
-
-/* =========================
-   SKILLS MODERN 3D
-========================= */
-
-.skills-modern{
-    background:radial-gradient(circle at top,#020c22,#020617);
-    padding:80px 20px;
-    perspective:1000px; /* enables 3D */
-}
-
-.skills-modern h2{
-    text-align:center;
-    color:#38bdf8;
-    margin-bottom:50px;
-    font-size:32px;
-    letter-spacing:1px;
-}
-
-/* GRID ALIGN */
-.skills-modern .container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
-}
-
-/* CATEGORY CARD */
-.skill-category{
-    background:linear-gradient(145deg,#0f172a,#020617);
-    padding:25px;
-    border-radius:16px;
-    transition:.5s ease;
-    transform-style:preserve-3d;
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.5),
-        inset 0 0 20px rgba(56,189,248,.05);
-}
-
-/* 3D HOVER */
-.skill-category:hover{
-    transform:
-        rotateX(6deg)
-        rotateY(-6deg)
-        translateY(-8px)
-        scale(1.02);
-
-    box-shadow:
-        0 25px 50px rgba(0,0,0,.7),
-        0 0 25px rgba(56,189,248,.35);
-}
-
-/* TITLE */
-.skill-category h3{
-    margin-bottom:18px;
-    color:#e2e8f0;
-    font-size:18px;
-}
-
-/* TAG WRAP */
-.skill-tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
-/* SKILL TAG */
-.skill-tag{
-    background:#16324a;
-    padding:10px 18px;
-    border-radius:10px;
-    color:#38bdf8;
-    font-weight:600;
-    transition:.35s;
-    transform:translateZ(20px);
-}
-
-/* TAG HOVER GLOW */
-.skill-tag:hover{
-    transform:
-        translateY(-4px)
-        scale(1.08);
-
-    background:#38bdf8;
-    color:#020617;
-
-    box-shadow:
-        0 0 15px #38bdf8,
-        0 0 30px rgba(56,189,248,.5);
-}
-
-/* FOOTER */
-.footer-modern{
-background:#0f172a;
-padding:40px;
-text-align:center;
-}
-
-.footer-icons{
-display:flex;
-justify-content:center;
-gap:25px;
-margin-bottom:15px;
-}
-
-.footer-icons img{
-width:28px;
-filter:invert(1);
-opacity:.7;
-}
-
-/* CHATBOT */
-#chat-toggle{
-position:fixed;
-bottom:20px;
-right:20px;
-width:65px;
-height:65px;
-background:#38bdf8;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-animation:flip 3s infinite;
-}
-
-@keyframes flip{
-50%{transform:rotateY(180deg)}
-}
-
-#chatbot{
-position:fixed;
-bottom:95px;
-right:20px;
-width:320px;
-background:#0f172a;
-border-radius:12px;
-display:none;
-overflow:hidden;
-}
-
-#chat-header{
-background:#38bdf8;
-color:#000;
-padding:10px;
-cursor:pointer;
-}
-
-#chat-body{
-height:250px;
-overflow:auto;
-padding:10px;
-}
-
-.msg{margin:6px 0}
-.user{color:#38bdf8}
-.bot{color:#22d3ee}
-
-#chat-input{display:flex}
-#chat-input input{
-flex:1;
-padding:8px;
-background:#020617;
-border:none;
-color:white;
-}
-
-#chat-input button{
-background:#38bdf8;
-border:none;
-padding:8px;
-}
-
-@media(max-width:900px){
-.hero{grid-template-columns:1fr}
-}
-
-/* =========================
-   EDUCATION SECTION
-========================= */
-
-.education-modern{
-    background:#020c22;
-    padding:80px 20px;
-}
-
-.education-modern h2{
-    text-align:center;
-    color:var(--primary);
-    font-size:32px;
-    margin-bottom:50px;
-    letter-spacing:1px;
-}
-
-/* GRID */
-.education-modern .container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
-}
-
-@media(max-width:768px){
-
-.education-modern{
-    padding:60px 15px;
-}
-
-.education-modern .container{
-    grid-template-columns:1fr;
-}
-
-.education-card{
-    padding:20px;
-}
-
-.education-modern .container{
-    max-width:900px;
-    margin:auto;
-}
-
-}
-
-/* CARD */
-.education-card{
-    background:linear-gradient(
-        145deg,
-        #0f172a,
-        #020617
-    );
-    border-radius:14px;
-    padding:28px;
-    position:relative;
-    transition:.35s ease;
-    border-left:5px solid var(--primary);
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
-}
-
-/* HOVER EFFECT */
-.education-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 15px 40px rgba(56,189,248,.25);
-}
-
-/* DEGREE */
-.education-card h3{
-    font-size:20px;
-    margin-bottom:8px;
-    color:#ffffff;
-}
-
-/* COLLEGE NAME */
-.edu-college{
-    color:#38bdf8;
-    font-weight:600;
-    margin-bottom:8px;
-}
-
-/* YEAR */
-.edu-year{
-    color:#94a3b8;
-    font-size:14px;
-}
-
-/* SMALL ACCENT DOT */
-.education-card::before{
-    content:"🎓";
-    position:absolute;
-    top:-14px;
-    left:-14px;
-    background:#38bdf8;
-    color:#000;
-    width:36px;
-    height:36px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    font-size:16px;
-}
-
-.projects-modern {
-    padding: 80px 20px;
-    background: #0f172a;
-    color: white;
-}
-
-.projects-modern h2 {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.project-card {
-    background: #1e293b;
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    transition: 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.project-tech {
-    color: #38bdf8;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-/* =========================
-   EXPERIENCE SECTION
-========================= */
-
-.experience-modern{
-    background:#0f172a;
-    padding:80px 20px;
-}
-
-.experience-modern h2{
-    text-align:center;
-    color:var(--primary);
-    margin-bottom:50px;
-    font-size:32px;
-}
-
-/* GRID */
-.experience-modern .container{
-    display:flex;
-    justify-content:center;
-}
-
-/* CARD */
-.experience-card{
-    max-width:900px;
-    background:linear-gradient(145deg,#020617,#0f172a);
-    padding:30px;
-    border-radius:16px;
-    border-left:5px solid var(--primary);
-    box-shadow:0 15px 40px rgba(0,0,0,.4);
-    transition:.35s;
-}
-
-.experience-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 20px 50px rgba(56,189,248,.25);
-}
-
-/* HEADER */
-.exp-header{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    margin-bottom:10px;
-}
-
-.exp-header h3{
-    font-size:22px;
-}
-
-.exp-duration{
-    color:#94a3b8;
-    font-size:14px;
-}
-
-/* COMPANY */
-.exp-company{
-    color:#38bdf8;
-    font-weight:600;
-    margin-bottom:15px;
-}
-
-/* POINTS */
-.exp-points{
-    padding-left:20px;
-}
-
-.exp-points li{
-    margin-bottom:10px;
-    color:#cbd5e1;
-}
-
-:root{
---bg:#020617;
---surface:#0f172a;
---primary:#38bdf8;
---neon:#22d3ee;
---text:#e2e8f0;
---dim:#94a3b8;
+:root {
+    --bg:#020617;
+    --surface:#0f172a;
+    --primary:#38bdf8;
+    --neon:#22d3ee;
+    --text:#e2e8f0;
+    --dim:#94a3b8;
 }
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior:smooth;
 }
 
 body{
-font-family:'Plus Jakarta Sans',sans-serif;
-background:
-radial-gradient(circle at top,#020617,#000);
-color:var(--text);
-line-height:1.6;
-overflow-x:hidden;
+    font-family:'Plus Jakarta Sans',sans-serif;
+    background: radial-gradient(circle at top,#020617,#000);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
 }
 
-/* ======================
-GLOBAL CONTAINER
-======================*/
-.container{
-max-width:1150px;
-margin:auto;
-padding:0 20px;
-position:relative;
-z-index:2;
+#bg-canvas {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-2;
 }
 
-/* ======================
-HOLOGRAM BACKGROUND GRID
-======================*/
 body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-linear-gradient(rgba(56,189,248,.05) 1px,transparent 1px),
-linear-gradient(90deg,rgba(56,189,248,.05) 1px,transparent 1px);
-background-size:60px 60px;
-animation:gridMove 25s linear infinite;
-z-index:0;
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(rgba(56,189,248,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(56,189,248,.04) 1px,transparent 1px);
+    background-size:60px 60px;
+    animation:gridMove 25s linear infinite;
+    z-index:-1;
 }
 
 @keyframes gridMove{
-0%{transform:translateY(0)}
-100%{transform:translateY(60px)}
+    0%{transform:translateY(0)}
+    100%{transform:translateY(60px)}
 }
 
-/* ======================
-NAV
-======================*/
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px;
+}
+
 nav{
-position:sticky;
-top:0;
-background:#020617cc;
-backdrop-filter:blur(12px);
-padding:18px;
-border-bottom:1px solid rgba(56,189,248,.2);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(2,6,23,.88);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(56,189,248,.15);
 }
 
-/* ======================
-SECTION BASE
-======================*/
+.nav-wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+}
+
+.logo{
+    color:var(--primary);
+    font-size:1.3rem;
+    font-weight:800;
+}
+
+.nav-links{
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+}
+
+.nav-links a{
+    color:var(--text);
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+}
+
 section{
-padding:100px 0;
-position:relative;
+    padding:90px 0;
 }
 
-/* ======================
-HERO
-======================*/
 .hero{
-display:grid;
-grid-template-columns:1.1fr 1fr;
-gap:50px;
-align-items:center;
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:50px;
+    align-items:center;
+    min-height:100vh;
 }
 
-@media(max-width:768px){
+.hero h1{
+    font-size:clamp(2.4rem,5vw,4.5rem);
+    margin:20px 0;
+}
+
+.hero p{
+    font-size:1.1rem;
+    color:var(--dim);
+}
 
 .terminal{
-min-height:140px;
-max-height:200px;
-font-size:13px;
-padding:14px;
+    background:#000;
+    border-radius:14px;
+    padding:18px;
+    min-height:180px;
+    max-height:260px;
+    overflow:auto;
+    font-family:'Fira Code';
+    box-shadow:0 0 30px rgba(34,211,238,.25);
+    font-size:14px;
 }
 
 .log{
-color:#22d3ee;
-white-space:normal;
-word-break:break-word;
+    color:var(--neon);
+    margin-bottom:6px;
 }
 
-}
-
-.log{color:#22d3ee}
-
-/* ======================
-PROFILE GLASS CARD
-======================*/
 .profile-card{
-background:rgba(15,23,42,.6);
-backdrop-filter:blur(20px);
-padding:28px;
-border-radius:18px;
-text-align:center;
-border:1px solid rgba(56,189,248,.2);
-box-shadow:
-0 20px 60px rgba(0,0,0,.6);
-transition:.5s;
-}
-
-.profile-card:hover{
-transform:translateY(-8px) rotateX(6deg);
+    background:rgba(15,23,42,.75);
+    backdrop-filter:blur(16px);
+    padding:28px;
+    border-radius:22px;
+    text-align:center;
+    border:1px solid rgba(56,189,248,.15);
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
 }
 
 .profile-img{
-width:160px;
-height:160px;
-border-radius:50%;
-border:4px solid var(--primary);
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    border:4px solid var(--primary);
+    object-fit:cover;
+    margin-bottom:18px;
 }
 
-.ai-hologram{
-    perspective:1200px;
-    text-align:center;
+.cv-btn{
+    display:inline-block;
+    margin-top:18px;
+    padding:12px 24px;
+    background:var(--primary);
+    color:#000;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:700;
+}
+
+.social-icons{
     display:flex;
     justify-content:center;
+    gap:18px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+.social-icons img{
+    width:28px;
+    height:28px;
+    filter:invert(1);
 }
 
 .holo-frame{
     position:relative;
-    display:inline-block;
-    animation:float 6s ease-in-out infinite;
-    max-width:100%;
+    max-width:600px;
+    margin:auto;
 }
 
 .holo-image{
     width:100%;
-    max-width:520px;   /* 🔥 reduced from 850px */
-    height:auto;
     border-radius:20px;
-
-    transform:
-    rotateX(8deg)
-    rotateY(-8deg);
-
-    box-shadow:
-    0 0 40px rgba(255,0,200,.3),
-    0 0 80px rgba(56,189,248,.25);
+    box-shadow:0 0 40px rgba(56,189,248,.25);
+    animation:float 6s ease-in-out infinite;
 }
 
-@media(max-width:1024px){
-    .holo-image{
-        max-width:420px;
-    }
-}
-
-@media(max-width:768px){
-    .holo-image{
-        max-width:320px;
-        transform:rotateX(4deg) rotateY(-4deg); /* reduce 3D on mobile */
-    }
-}
-
-/* scanning light */
 .scan-line{
-position:absolute;
-inset:0;
-background:
-linear-gradient(
-transparent,
-rgba(56,189,248,.3),
-transparent);
-animation:scan 4s linear infinite;
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent,rgba(56,189,248,.25),transparent);
+    animation:scan 4s linear infinite;
 }
 
 @keyframes float{
-50%{transform:translateY(-20px)}
+    50%{transform:translateY(-18px)}
 }
 
 @keyframes scan{
-0%{transform:translateY(-100%)}
-100%{transform:translateY(100%)}
+    0%{transform:translateY(-100%)}
+    100%{transform:translateY(100%)}
 }
 
-/* ======================
-SKILLS 3D
-======================*/
-.skills-modern{
-perspective:1000px;
+.section-title{
+    text-align:center;
+    font-size:2.2rem;
+    color:var(--primary);
+    margin-bottom:50px;
 }
 
-.skills-modern .container{
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:28px;
 }
 
-.skill-category{
-background:rgba(15,23,42,.6);
-backdrop-filter:blur(15px);
-padding:25px;
-border-radius:16px;
-transition:.4s;
-border:1px solid rgba(56,189,248,.2);
+.card{
+    background:rgba(15,23,42,.78);
+    padding:26px;
+    border-radius:18px;
+    border:1px solid rgba(56,189,248,.12);
+    backdrop-filter:blur(12px);
+    transition:.35s;
 }
 
-.skill-category:hover{
-transform:
-rotateX(8deg)
-rotateY(-8deg)
-translateY(-10px);
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 35px rgba(56,189,248,.18);
+}
 
-box-shadow:
-0 0 40px rgba(56,189,248,.4);
+.skill-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
 }
 
 .skill-tag{
-background:#16324a;
-padding:10px 18px;
-border-radius:10px;
-color:#38bdf8;
-transition:.3s;
-}
-
-.skill-tag:hover{
-background:#38bdf8;
-color:#000;
-box-shadow:0 0 20px #38bdf8;
-}
-
-/* ======================
-PROJECTS HOLOGRAM CARD
-======================*/
-.project-card{
-background:rgba(30,41,59,.6);
-backdrop-filter:blur(15px);
-padding:28px;
-border-radius:16px;
-border:1px solid rgba(56,189,248,.2);
-transition:.4s;
-}
-
-.project-card:hover{
-transform:translateY(-10px) scale(1.02);
-box-shadow:
-0 0 45px rgba(56,189,248,.35);
-}
-
-.project-tech{
-color:var(--primary);
-font-weight:600;
-}
-
-/* ======================
-EXPERIENCE
-======================*/
-.experience-card{
-background:rgba(15,23,42,.6);
-backdrop-filter:blur(15px);
-padding:35px;
-border-radius:16px;
-border-left:5px solid var(--primary);
-transition:.4s;
-}
-
-.experience-card:hover{
-box-shadow:
-0 0 40px rgba(56,189,248,.3);
-}
-
-/* ======================
-EDUCATION
-======================*/
-.education-card{
-background:rgba(15,23,42,.6);
-backdrop-filter:blur(15px);
-padding:28px;
-border-radius:14px;
-border-left:4px solid var(--primary);
-transition:.4s;
-}
-
-.education-card:hover{
-transform:translateY(-8px);
-box-shadow:
-0 0 35px rgba(56,189,248,.3);
-}
-
-/* ======================
-FOOTER
-======================*/
-.footer-modern{
-background:#020617;
-text-align:center;
-padding:50px;
-border-top:1px solid rgba(56,189,248,.2);
-}
-
-/* ======================
-RESPONSIVE
-======================*/
-@media(max-width:900px){
-.hero{
-grid-template-columns:1fr;
-text-align:center;
-}
-}
-
-.contact-modern{
-background:#0b1220; /* solid stable dark */
-padding:80px 20px;
-text-align:center;
-}
-
-.contact-modern h2{
-color:#38bdf8;
-margin-bottom:30px;
+    padding:8px 14px;
+    border-radius:10px;
+    background:#16324a;
+    color:var(--primary);
+    font-weight:600;
 }
 
 .contact-card{
-background:#0f172a;   /* remove transparent glass */
-padding:30px;
-border-radius:16px;
-max-width:600px;
-margin:auto;
-border:1px solid rgba(56,189,248,.2);
-box-shadow:0 0 30px rgba(56,189,248,.15);
+    max-width:700px;
+    margin:auto;
+    text-align:center;
 }
 
-.contact-card{
-background:rgba(15,23,42,0.85);  /* less transparent */
-backdrop-filter:blur(12px);
+.contact-card a{
+    color:var(--primary);
+    text-decoration:none;
+    word-break:break-all;
 }
 
-.contact-card a {
-    color: #ffffff !important;
-    text-decoration: none;
+.footer{
+    text-align:center;
+    padding:40px 20px;
+    background:#020617;
+    border-top:1px solid rgba(56,189,248,.12);
 }
 
-.contact-card a:hover {
-    color: #38bdf8;
+#chat-toggle{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:var(--primary);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    font-size:1.5rem;
+    z-index:999;
 }
 
-.contact-card a {
-    color: #ffffff !important;
-    text-decoration: none;
+#chatbot{
+    position:fixed;
+    right:20px;
+    bottom:90px;
+    width:320px;
+    max-width:90%;
+    background:#0f172a;
+    border-radius:14px;
+    display:none;
+    overflow:hidden;
+    z-index:999;
 }
 
-.contact-card a:hover {
-    color: #38bdf8;
+#chat-header{
+    padding:12px;
+    background:var(--primary);
+    color:#000;
+    font-weight:700;
 }
 
-.contact-card p{
-margin-bottom:12px;
-font-size:16px;
-color:#e2e8f0;
+#chat-body{
+    height:240px;
+    overflow:auto;
+    padding:12px;
 }
 
-.contact-card p {
-    word-break: break-word;
-    overflow-wrap: break-word;
+#chat-input{
+    display:flex;
 }
 
-.contact-card a {
-    word-break: break-all;
+#chat-input input{
+    flex:1;
+    padding:10px;
+    border:none;
+    background:#020617;
+    color:#fff;
 }
 
-.email-text {
-    color: #38bdf8;
-    text-decoration: none;
-    word-break: break-all;
+#chat-input button{
+    border:none;
+    background:var(--primary);
+    padding:10px 16px;
+}
+
+@media(max-width:992px){
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
 }
 
 @media(max-width:768px){
+    .nav-wrap{
+        flex-direction:column;
+        gap:12px;
+    }
 
-.contact-card {
-    padding:20px;
-}
+    .nav-links{
+        justify-content:center;
+        gap:14px;
+    }
 
-.contact-card p {
-    font-size:14px;
-}
+    section{
+        padding:70px 0;
+    }
 
+    .terminal{
+        min-height:150px;
+        font-size:12px;
+    }
+
+    .profile-img{
+        width:130px;
+        height:130px;
+    }
+
+    .card{
+        padding:20px;
+    }
 }
 </style>
 </head>
-
 <body>
 
-<nav class="container">
-🚀 ShivRatan.dev
+<canvas id="bg-canvas"></canvas>
+
+<nav>
+<div class="container nav-wrap">
+<div class="logo">🚀 ShivRatan.dev</div>
+<div class="nav-links">
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#experience">Experience</a>
+<a href="#education">Education</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
 </nav>
 
 <section>
 <div class="container hero">
-
 <div>
 <div class="terminal" id="terminal"></div>
 <h1>Hi 👋 I'm Shiv Ratan</h1>
-<p>AI Backend & Full Stack Engineer</p>
+<p>AI Backend Engineer • Full Stack Developer • Secure Systems Architect</p>
 </div>
 
 <div>
-<div class="profile-card">
-<img src="profile.png" class="profile-img">
+<div class="profile-card tilt-card">
+<img src="profile.png" class="profile-img" alt="Shiv Ratan">
 <h3>Shiv Ratan Chaurasia</h3>
-<p>Backend Engineer • AI Developer</p>
-
-<div class="profile-actions">
-
+<p>2.5+ Years Experience in AI, Django, FastAPI, OCR, Media Systems</p>
 <a href="shiv-ratan.docx" class="cv-btn">⬇ Download CV</a>
-
 <div class="social-icons">
-
-    <a href="https://linkedin.com/in/shiv-ratan-chaurasia-035558227/" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-    </a>
-
-    <a href="https://github.com/shivratan20/" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
-    </a>
-
-    <a href="mailto:shivratanchaurasia03@gmail.com" target="_blank">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB81srFeDr4XXdlLDeaU2Ga3AV6QsUjh4UQA&s" alt="mail">
-    </a>
-
-    <a href="tel:+919319848814" target="_blank">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8OLgR1m8iL3BaVoayTLslIfTFrlnWrI6XzA&s" alt="phone">
-    </a>
-
+<a href="https://linkedin.com/in/shiv-ratan-chaurasia-035558227/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></a>
+<a href="https://github.com/shivratan20/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png"></a>
 </div>
 </div>
-
 </div>
-</div>
-
 </div>
 </section>
-<section class="ai-hologram">
-<div class="container">
 
+<section>
+<div class="container">
 <div class="holo-frame">
-    <img id="holoImage" src="gif1.gif" class="holo-image">
-    <div class="scan-line"></div>
+<img id="holoImage" src="gif1.gif" class="holo-image">
+<div class="scan-line"></div>
 </div>
-
 </div>
 </section>
 
-
-<section class="contact-modern">
+<section id="skills">
 <div class="container">
-<h2>📞 Contact Me</h2>
+<h2 class="section-title">Technical Skills</h2>
+<div class="grid">
+<div class="card tilt-card">
+<h3>Languages</h3>
+<div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">SQL</span><span class="skill-tag">HTML/CSS</span></div>
+</div>
+<div class="card tilt-card">
+<h3>Backend</h3>
+<div class="skill-tags"><span class="skill-tag">Django</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Laravel</span><span class="skill-tag">Redis</span></div>
+</div>
+<div class="card tilt-card">
+<h3>AI / Media</h3>
+<div class="skill-tags"><span class="skill-tag">OCR</span><span class="skill-tag">OpenCV</span><span class="skill-tag">FFmpeg</span></div>
+</div>
+<div class="card tilt-card">
+<h3>Security</h3>
+<div class="skill-tags"><span class="skill-tag">JWT</span><span class="skill-tag">OAuth2</span><span class="skill-tag">OWASP</span></div>
+</div>
+</div>
+</div>
+</section>
 
-<div class="contact-card">
-<p><strong>👤 Name:</strong> Shiv Ratan Chaurasia</p>
-<p>
-<strong>📱 Mobile:</strong> 
-<a href="tel:+919319848814">9319848814</a>
-</p>
+<section id="projects">
+<div class="container">
+<h2 class="section-title">Projects</h2>
+<div class="grid">
+<div class="card tilt-card"><h3>Snap Cut</h3><p>Django-based scalable media processing platform with Redis + Celery.</p></div>
+<div class="card tilt-card"><h3>Dojiwa</h3><p>AI avatar generation with OAuth2, payment systems, and secure backend pipelines.</p></div>
+<div class="card tilt-card"><h3>Qrtli</h3><p>AI QR code art generator with Laravel + Python microservices.</p></div>
+<div class="card tilt-card"><h3>Financial Manager</h3><p>RBAC-secured finance platform using PHP CodeIgniter.</p></div>
+</div>
+</div>
+</section>
 
-<p>
-<strong>📧 Email:</strong> 
-<a href="mailto:shivratanchaurasia03@gmail.com">
-shivratanchaurasia03@gmail.com
-</a>
-</p>
+<section id="experience">
+<div class="container">
+<h2 class="section-title">Professional Experience</h2>
+<div class="card">
+<h3>Backend Developer — VMS Techs, Noida</h3>
+<p>Aug 2022 – Present</p>
+<ul>
+<li>Built secure AI platforms with Django, Redis, Celery.</li>
+<li>Implemented payment integrations and OAuth systems.</li>
+<li>Developed OCR, QR, media automation pipelines.</li>
+<li>Optimized systems for concurrency and scalability.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="education">
+<div class="container">
+<h2 class="section-title">Education</h2>
+<div class="grid">
+<div class="card"><h3>B.Tech</h3><p>IIMT College of Engineering, Greater Noida (2018–2022)</p></div>
+<div class="card"><h3>Intermediate</h3><p>Prestige Intermediate College, Deoria (2018)</p></div>
+<div class="card"><h3>High School</h3><p>Prestige Intermediate College, Deoria (2016)</p></div>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<h2 class="section-title">Contact</h2>
+<div class="card contact-card">
+<p><strong>📱 Mobile:</strong> <a href="tel:+919319848814">9319848814</a></p>
+<p><strong>📧 Email:</strong> <a href="mailto:shivratanchaurasia03@gmail.com">shivratanchaurasia03@gmail.com</a></p>
 <p><strong>📍 Location:</strong> Noida, Uttar Pradesh, India</p>
 </div>
-
 </div>
 </section>
 
-<!-- SKILLS -->
-<section class="skills-modern">
-<h2>Technical Skills</h2>
-
-<div class="container">
-
-<div class="skill-category">
-<h3>Languages</h3>
-<div class="skill-tags">
-<span class="skill-tag">Python</span>
-<span class="skill-tag">HTML</span>
-<span class="skill-tag">JavaScript</span>
-<span class="skill-tag">SQL</span>
-</div>
-</div>
-
-<div class="skill-category">
-<h3>Backend</h3>
-<div class="skill-tags">
-<span class="skill-tag">Django</span>
-<span class="skill-tag">Laravel</span>
-<span class="skill-tag">FastAPI</span>
-<span class="skill-tag">codeigniter 3</span>
-<span class="skill-tag">Redis</span>
-<span class="skill-tag">Celery</span>
-</div>
-</div>
-
-<div class="skill-category">
-<h3>AI / Media</h3>
-<div class="skill-tags">
-<span class="skill-tag">OpenCV</span>
-<span class="skill-tag">FFmpeg</span>
-<span class="skill-tag">OCR</span>
-</div>
-</div>
-
-
-<div class="skill-category">
-<h3>Data Bases</h3>
-<div class="skill-tags">
-<span class="skill-tag">MySQL</span>
-<span class="skill-tag">PostgreSQL</span>
-<span class="skill-tag">MongoDB</span>
-</div>
-</div>
-
-
-<div class="skill-category">
-<h3>Security</h3>
-<div class="skill-tags">
-<span class="skill-tag">OWASP</span>
-<span class="skill-tag">JWT</span>
-<span class="skill-tag">OAuth2</span>
-</div>
-</div>
-
-<div class="skill-category">
-<h3>Payment Gate</h3>
-<div class="skill-tags">
-<span class="skill-tag">PhonePe</span>
-<span class="skill-tag">PayPal</span>
-<span class="skill-tag">Razorpay</span>
-</div>
-</div>
-
-
-</div>
-</section>
-
-
-<section class="experience-modern">
-<h2>Professional Experience</h2>
-
-<div class="container">
-
-<div class="experience-card">
-
-<div class="exp-header">
-<h3>Backend Developer</h3>
-<span class="exp-duration">Aug 2022 – Present</span>
-</div>
-
-<p class="exp-company">
-VMS Techs, Noida (Uttar Pradesh)
-</p>
-
-<ul class="exp-points">
-<li>Developed scalable Django-based media platforms using Redis & Celery for asynchronous processing.</li>
-
-<li>Built AI avatar generation systems with secure OAuth authentication and payment integrations.</li>
-
-<li>Designed financial tracking and appointment booking platforms with strong access control.</li>
-
-<li>Implemented video & QR processing tools using FFmpeg, OpenCV, and WhatsApp API integrations.</li>
-
-<li>Optimized backend performance and improved system scalability for high concurrent users.</li>
-</ul>
-
-</div>
-
-</div>
-</section>
-
-
-<section class="projects-modern">
-<h2>Project Details</h2>
-
-<div class="container">
-
-<!-- Project 1 -->
-<div class="project-card">
-<h3>Snap Cut</h3>
-<p class="project-tech">
-Django • Redis • PostgreSQL • Celery
-</p>
-
-<p>
-Designed a scalable media processing platform capable of handling
-large file uploads using asynchronous background tasks.
-Implemented Redis & Celery queue system to prevent request blocking
-and improve performance during heavy traffic.
-</p>
-</div>
-
-<!-- Project 2 -->
-<div class="project-card">
-<h3>Dojiwa</h3>
-<p class="project-tech">
-Django • OAuth2 • Razorpay • Redis
-</p>
-
-<p>
-Developed an AI avatar generation platform with secure OAuth login
-and payment integration. Used Redis-based session management and
-asset caching which improved application load speed by nearly 30%.
-</p>
-</div>
-
-<!-- Project 3 -->
-<div class="project-card">
-<h3>Financial Manager (FN)</h3>
-<p class="project-tech">
-PHP • CodeIgniter • MySQL
-</p>
-
-<p>
-Built a financial management system implementing Role-Based Access
-Control (RBAC) to maintain secure data access across multiple
-organizational levels ensuring privacy and integrity.
-</p>
-</div>
-
-<!-- Project 4 -->
-<div class="project-card">
-<h3>Qrtli</h3>
-<p class="project-tech">
-Laravel • Python • PhonePe • AI Integration
-</p>
-
-<p>
-Created an AI-powered QR styling platform integrating Laravel backend
-with Python microservices for real-time QR customization and enhanced
-user interaction.
-</p>
-</div>
-
-</div>
-</section>
-
-
-<section class="education-modern">
-<h2>Education</h2>
-
-<div class="container">
-
-<div class="project-card">
-<h3>B.Techs</h3>
-<p class="project-tech">
-IIMT College of Engineering, Greater Noida
-</p>
-<p class="project-tech">
-Year of Passing: 2018-2022
-</p>
-
-</div>
-
-<div class="project-card">
-<h3>InterMediate</h3>
-<p class="project-tech">
-Prestige InterMediate College, Deoria (Uttar Pradesh)
-</p>
-<p class="project-tech">
-Year of Passing: 2018
-</p>
-</div>
-
-<div class="project-card">
-<h3>High School</h3>
-<p class="project-tech">
-Prestige InterMediate College, Deoria (Uttar Pradesh)
-</p>
-
-<p class="project-tech">
-Year of Passing: 2016
-</p>
-
-</div>
-
-</div>
-</section>
-
-<footer class="footer-modern">
-<div class="profile-actions">
-
-<a href="shiv-ratan.docx" class="cv-btn">⬇ Download CV</a>
-
-<div class="social-icons">
-
-    <a href="https://linkedin.com/in/shiv-ratan-chaurasia-035558227/" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-    </a>
-
-    <a href="https://github.com/shivratan20/" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
-    </a>
-
-    <a href="mailto:shivratanchaurasia03@gmail.com" target="_blank">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB81srFeDr4XXdlLDeaU2Ga3AV6QsUjh4UQA&s" alt="mail">
-    </a>
-
-    <a href="tel:+919319848814" target="_blank">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8OLgR1m8iL3BaVoayTLslIfTFrlnWrI6XzA&s" alt="phone">
-    </a>
-
-</div>
-</div>
-<p>© 2026 ShivRatan.dev. All rights reserved.</p>
+<footer class="footer">
+<p>© 2026 ShivRatan.dev | AI Backend Engineer Portfolio</p>
 </footer>
 
 <div id="chat-toggle" onclick="toggleChat()">🤖</div>
-
 <div id="chatbot">
-<div id="chat-header" onclick="toggleChat()">Ask ShivRatan AI</div>
+<div id="chat-header">Ask ShivRatan AI</div>
 <div id="chat-body"></div>
-
 <div id="chat-input">
-<input id="userInput">
+<input id="userInput" placeholder="Ask something...">
 <button onclick="sendMessage()">Send</button>
 </div>
 </div>
 
 <script>
-
-
-const terminal = document.getElementById("terminal");
-
+const terminal = document.getElementById('terminal');
 const bootLogs = [
-"Booting ShivRatan AI Portfolio...",
-"Loading Django Framework...",
-"Connecting Redis & Celery...",
-"Initializing FastAPI Services...",
-"Loading OpenCV & AI Modules...",
-"Securing APIs with JWT & OAuth2...",
-"Connecting MySQL / PostgreSQL / MongoDB...",
-"Payment Gateways Integrated (Razorpay / PayPal / PhonePe)...",
-"Contact Loaded ✔",
-"Mobile: 9319848814",
-"Email: shivratanchaurasia03@gmail.com",
-"🚀 AI System Ready"
+    'Booting ShivRatan AI Portfolio...',
+    'Loading Django Framework...',
+    'Connecting Redis & Celery...',
+    'Initializing FastAPI Services...',
+    'Loading OpenCV & AI Modules...',
+    'Securing APIs with JWT & OAuth2...',
+    'Connecting Databases...',
+    '🚀 AI System Ready'
 ];
 
-bootLogs.forEach((text, index) => {
-    setTimeout(() => {
-        const line = document.createElement("div");
-        line.className = "log";
-        line.textContent = text;
+bootLogs.forEach((text,index)=>{
+    setTimeout(()=>{
+        const line = document.createElement('div');
+        line.className='log';
+        line.textContent=text;
         terminal.appendChild(line);
         terminal.scrollTop = terminal.scrollHeight;
-    }, index * 700);
+    }, index*700);
 });
 
-
-
 let opened=false;
-
 function toggleChat(){
-let bot=document.getElementById("chatbot");
-bot.style.display=bot.style.display==="block"?"none":"block";
-
-if(!opened){
-document.getElementById("chat-body").innerHTML=
-"<div class='msg bot'>Welcome to ShivRatan AI Assistant 👋</div>";
-opened=true;
-}
+    let bot=document.getElementById('chatbot');
+    bot.style.display=bot.style.display==='block'?'none':'block';
+    if(!opened){
+        document.getElementById('chat-body').innerHTML="<div class='msg bot'>Welcome to ShivRatan AI Assistant 👋</div>";
+        opened=true;
+    }
 }
 
 function sendMessage(){
-let input=document.getElementById("userInput");
-let msg=input.value;
-if(!msg)return;
-
-let body=document.getElementById("chat-body");
-body.innerHTML+=`<div class='msg user'>${msg}</div>`;
-body.innerHTML+=`<div class='msg bot'>Thanks! Ask about skills or resume.</div>`;
-input.value="";
+    let input=document.getElementById('userInput');
+    if(!input.value) return;
+    let body=document.getElementById('chat-body');
+    body.innerHTML += `<div class='msg user'>${input.value}</div>`;
+    body.innerHTML += `<div class='msg bot'>Thanks! Ask about my skills, projects, or resume.</div>`;
+    input.value='';
+    body.scrollTop = body.scrollHeight;
 }
 
-const gifs = [
-    "gif1.gif",
-    "gif2.gif",
-    "gif3.gif",
-    "gif4.gif",
-    "gif5.gif",
-    "gif6.gif",
-    "gif7.gif",
-    "gif8.gif",
-    "gif9.gif",
-    "gif10.gif",
-    "newimg.png"
-];
-
+const gifs = ['gif1.gif','gif2.gif','gif3.gif','gif4.gif','gif5.gif'];
 let holoIndex = 0;
-const holoImage = document.getElementById("holoImage");
-
-setInterval(() => {
-    holoIndex = (holoIndex + 1) % gifs.length;
+const holoImage = document.getElementById('holoImage');
+setInterval(()=>{
+    holoIndex = (holoIndex+1)%gifs.length;
     holoImage.src = gifs[holoIndex];
-}, 2000);
+},2000);
 
+VanillaTilt.init(document.querySelectorAll('.tilt-card'), {
+    max: 10,
+    speed: 400,
+    glare: true,
+    'max-glare': 0.2,
+});
 
+const canvas = document.getElementById('bg-canvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas, alpha:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+
+const geometry = new THREE.BufferGeometry();
+const vertices = [];
+for(let i=0;i<5000;i++){
+    vertices.push((Math.random()-0.5)*2000);
+    vertices.push((Math.random()-0.5)*2000);
+    vertices.push((Math.random()-0.5)*2000);
+}
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices,3));
+
+const material = new THREE.PointsMaterial({
+    color:0x38bdf8,
+    size:2
+});
+
+const stars = new THREE.Points(geometry, material);
+scene.add(stars);
+camera.position.z = 400;
+
+function animate(){
+    requestAnimationFrame(animate);
+    stars.rotation.x += 0.0003;
+    stars.rotation.y += 0.0005;
+    renderer.render(scene,camera);
+}
+animate();
+
+window.addEventListener('resize', ()=>{
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
 </script>
+
 </body>
 </html>
