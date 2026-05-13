@@ -225,39 +225,9 @@ nav{
 
 .sec-title em{font-style:italic;color:var(--fg2)}
 
-#hologram{
-  padding:80px 0;
-  border-bottom:1px solid var(--line2);
-  position:relative;
-  overflow:hidden;
-}
-
-.holo-wrap{
-  display:flex;justify-content:center;
-  perspective:1200px;
-}
-
-.holo-frame{
-  position:relative;
-  display:inline-block;
-  animation:hfloat 8s ease-in-out infinite;
-}
-
 @keyframes hfloat{
   0%,100%{transform:translateY(0) rotateX(4deg) rotateY(-4deg)}
   50%{transform:translateY(-18px) rotateX(6deg) rotateY(-6deg)}
-}
-
-.holo-img{
-  width:100%;max-width:480px;height:auto;
-  display:block;
-  border-radius:4px;
-  filter:grayscale(20%);
-  transition:opacity .5s,filter .5s;
-  box-shadow:0 40px 80px rgba(0,0,0,.4);
-}
-[data-theme="light"] .holo-img{
-  box-shadow:0 40px 80px rgba(0,0,0,.15);
 }
 
 .scan-bar{
@@ -665,18 +635,6 @@ footer{
   </div>
 </section>
 
-<!-- HOLOGRAM / GIF -->
-<!-- <section id="hologram">
-  <div class="wrap">
-    <div class="holo-wrap">
-      <div class="holo-frame">
-        <img id="holoImg" src="gif1.gif" class="holo-img" alt="AI Visual"/>
-        <div class="scan-bar"></div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
 
 <section style="padding:60px 0 80px;border-bottom:1px solid var(--line2);position:relative;z-index:5">
   <div class="wrap r">
@@ -1064,31 +1022,6 @@ logs.forEach(({c,t},i)=>{
     term.scrollTop=term.scrollHeight;
   },i*550);
 });
-
-const gifs = [
-  'gif1.gif','gif2.gif','gif3.gif','gif4.gif','gif5.gif',
-  'gif6.gif','gif7.gif','gif8.gif','gif9.gif','gif10.gif',
-  'newimg.png'
-];
-
-let gi = 0;
-const hi = document.getElementById('holoImg');
-
-if (hi !== null) {
-
-  setInterval(() => {
-
-    hi.style.opacity = '0';
-
-    setTimeout(() => {
-      gi = (gi + 1) % gifs.length;
-      hi.src = gifs[gi];
-      hi.style.opacity = '1';
-    }, 450);
-
-  }, 2500);
-
-}
 
 let chatOpen=false;
 function toggleChat(){
