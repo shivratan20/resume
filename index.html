@@ -1251,32 +1251,35 @@ setInterval(applyTimeTheme, 300000);
 })();
 
 function toggleTheme(){
+  const oldPopup = document.getElementById('themeSelectorPopup');
+  if(oldPopup){
+    oldPopup.remove();
+  }
 
-  let popup = document.getElementById('themeSelectorPopup');
 
-  if(!popup){
+  const popup = document.createElement('div');
+  popup.id = 'themeSelectorPopup';
+  popup.innerHTML = `
+    <div id="themePopupOverlay">
+      <div id="themePopupBox">
+        <h3>Select Brightness Mode</h3>
+        <p>Choose your preferred time-zone theme:</p>
 
-    popup = document.createElement('div');
-    popup.id = 'themeSelectorPopup';
+        <button class="themeOptionBtn" data-theme="morning">🌅 Morning</button>
+        <button class="themeOptionBtn" data-theme="afternoon">☀️ Afternoon</button>
+        <button class="themeOptionBtn" data-theme="evening">🌇 Evening</button>
+        <button class="themeOptionBtn" data-theme="night">🌙 Night</button>
 
-    popup.innerHTML = `
-      <div id="themePopupOverlay">
-        <div id="themePopupBox">
-          <h3>Select Brightness Mode</h3>
-          <p>Choose your preferred time-zone theme:</p>
-
-          <button class="themeOptionBtn" data-theme="morning">🌅 Morning</button>
-          <button class="themeOptionBtn" data-theme="afternoon">☀️ Afternoon</button>
-          <button class="themeOptionBtn" data-theme="evening">🌇 Evening</button>
-          <button class="themeOptionBtn" data-theme="night">🌙 Night</button>
-
-          <button id="closeThemePopup">Close</button>
-        </div>
+        <button id="closeThemePopup">Close</button>
       </div>
-    `;
+    </div>
+  `;
 
-    document.body.appendChild(popup);
+  document.body.appendChild(popup);
+  if(!document.getElementById('themePopupStyles')){
     const style = document.createElement('style');
+    style.id = 'themePopupStyles';
+
     style.innerHTML = `
       #themePopupOverlay{
         position:fixed;
@@ -1353,20 +1356,23 @@ function toggleTheme(){
       }
     `;
     document.head.appendChild(style);
-
-    document.querySelectorAll('.themeOptionBtn').forEach(btn=>{
-      btn.onclick = function(){
-        const mode = this.dataset.theme;
-        applySelectedTheme(mode);
-        document.getElementById('themePopupOverlay').remove();
-      };
-    });
-
-    document.getElementById('closeThemePopup').onclick = ()=>{
-      document.getElementById('themePopupOverlay').remove();
-    };
-
   }
+
+  document.querySelectorAll('.themeOptionBtn').forEach(btn=>{
+    btn.onclick = function(){
+      applySelectedTheme(this.dataset.theme);
+      popup.remove();
+    };
+  });
+
+  document.getElementById('closeThemePopup').onclick = ()=>{
+    popup.remove();
+  };
+  document.getElementById('themePopupOverlay').onclick = (e)=>{
+    if(e.target.id === 'themePopupOverlay'){
+      popup.remove();
+    }
+  };
 }
 
 function applySelectedTheme(mode){
