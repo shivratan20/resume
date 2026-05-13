@@ -1065,14 +1065,30 @@ logs.forEach(({c,t},i)=>{
   },i*550);
 });
 
-const gifs=['gif1.gif','gif2.gif','gif3.gif','gif4.gif','gif5.gif',
-            'gif6.gif','gif7.gif','gif8.gif','gif9.gif','gif10.gif','newimg.png'];
-let gi=0;
-const hi=document.getElementById('holoImg');
-setInterval(()=>{
-  hi.style.opacity='0';
-  setTimeout(()=>{ gi=(gi+1)%gifs.length; hi.src=gifs[gi]; hi.style.opacity='1'; },450);
-},2500);
+const gifs = [
+  'gif1.gif','gif2.gif','gif3.gif','gif4.gif','gif5.gif',
+  'gif6.gif','gif7.gif','gif8.gif','gif9.gif','gif10.gif',
+  'newimg.png'
+];
+
+let gi = 0;
+const hi = document.getElementById('holoImg');
+
+if (hi !== null) {
+
+  setInterval(() => {
+
+    hi.style.opacity = '0';
+
+    setTimeout(() => {
+      gi = (gi + 1) % gifs.length;
+      hi.src = gifs[gi];
+      hi.style.opacity = '1';
+    }, 450);
+
+  }, 2500);
+
+}
 
 let chatOpen=false;
 function toggleChat(){
