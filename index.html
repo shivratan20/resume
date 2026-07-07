@@ -108,6 +108,30 @@
   .welcome-enter svg{ transition:transform .3s; }
   .welcome-enter:hover svg{ transform:translateX(4px); }
 
+  .avail-badge{
+    display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11px;
+    letter-spacing:0.05em; color:var(--green); padding:7px 14px; border-radius:999px;
+    border:1px solid rgba(52,211,153,0.35); background:rgba(52,211,153,0.08); white-space:nowrap;
+  }
+  .avail-badge .avail-dot{ width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green); animation:pulseDot 2s ease-in-out infinite; }
+
+  @media (max-width:640px){
+    #welcome{ height:100vh; height:100svh; }
+    .welcome-ui{ padding:6vh 6vw 6vh; gap:14px; }
+    .welcome-top{ gap:10px; }
+    .welcome-eyebrow{ font-size:10px; letter-spacing:0.2em; }
+    .welcome-greeting .hi{ font-size:1.5rem; }
+    .welcome-greeting .sub{ font-size:0.82rem; max-width:34ch; margin-left:auto; margin-right:auto; }
+    .welcome-play{ font-size:9.5px; max-width:28ch; }
+    .welcome-hint{ font-size:11px; }
+    .welcome-enter{ padding:13px 24px; font-size:12px; }
+    .avail-badge{ font-size:10px; padding:6px 12px; }
+  }
+  @media (max-width:380px){
+    .welcome-greeting .hi{ font-size:1.3rem; }
+    .welcome-ui{ gap:10px; padding:5vh 5vw; }
+  }
+
   header{ position:fixed; top:0; left:0; right:0; z-index:500; display:flex; justify-content:center; padding-top:18px; }
   .navbar{ display:flex; align-items:center; justify-content:space-between; gap:24px; padding:12px 20px 12px 22px;
     background:rgba(9,11,19,0.55); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
@@ -293,6 +317,7 @@
       <div class="welcome-greeting" id="welcomeGreeting">
         <div class="hi">Welcome 👋</div>
         <div class="sub">to my corner of the web — let's build something worth shipping.</div>
+        <div style="margin-top:14px;"><span class="avail-badge"><span class="avail-dot"></span>Available for freelance work</span></div>
       </div>
     </div>
     <div class="welcome-bottom">
@@ -339,6 +364,7 @@
         <div class="eyebrow">Noida, India · Available for opportunities</div>
         <h1>Backend systems that <span class="grad">ship AI</span> to production.</h1>
         <p class="hero-sub">I'm Shiv Ratan Chaurasia — a Python backend developer with 3.5+ years building AI-integrated platforms, async media pipelines, and REST APIs that hold up under real production load.</p>
+        <div style="margin-top:16px;"><span class="avail-badge"><span class="avail-dot"></span>Available for freelance work</span></div>
 
         <div class="terminal glass" role="group" aria-label="Terminal introduction">
           <div class="terminal-bar">
@@ -350,7 +376,7 @@
 
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary magnetic">View Projects →</a>
-          <a href="Shiv_Ratan_Chaurasia_Resume_Clean.pdf" download class="btn btn-ghost magnetic">Download Resume</a>
+          <a href="resume.pdf" download class="btn btn-ghost magnetic">Download Resume</a>
         </div>
         <div class="hero-stats">
           <div><div class="stat-num"><span class="accent">3.5</span>+</div><div class="stat-label">Years experience</div></div>
@@ -623,11 +649,15 @@ function initWelcome(){
   const playHint = document.getElementById('welcomePlay');
   if(!canvas || typeof THREE === 'undefined'){ finishWelcome(); return; }
 
+  const isMobile = window.innerWidth < 780 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+
+  try{
+
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(46, window.innerWidth/window.innerHeight, 0.1, 100);
   camera.position.set(0,0,11);
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:!isMobile });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.6 : 2));
   renderer.setSize(window.innerWidth, window.innerHeight);
 
   function glowTex(hex){
@@ -654,7 +684,7 @@ function initWelcome(){
     ctx.letterSpacing = '0px';
     const data = ctx.getImageData(0,0,cw,ch).data;
     const pts = [];
-    const step = 4;
+    const step = isMobile ? 7 : 4;
     const worldW = 15.5, worldH = worldW * (ch/cw);
     for(let y=0;y<ch;y+=step){
       for(let x=0;x<cw;x+=step){
@@ -706,7 +736,7 @@ function initWelcome(){
   scene.add(spaceGroup);
 
   function makeRockyTexture(){
-    const s = 1024;
+    const s = isMobile ? 512 : 1024;
     const c = document.createElement('canvas'); c.width = c.height = s;
     const ctx = c.getContext('2d');
     // warm-grey regolith base with soft tonal variation
@@ -746,7 +776,7 @@ function initWelcome(){
 
   const rockyTex = makeRockyTexture();
   const planetMat = new THREE.MeshStandardMaterial({ map: rockyTex, bumpMap: rockyTex, bumpScale: 0.05, roughness: 0.95, metalness: 0.02 });
-  const planetMesh = new THREE.Mesh(new THREE.SphereGeometry(1.35, 96, 96), planetMat);
+  const planetMesh = new THREE.Mesh(new THREE.SphereGeometry(1.35, isMobile ? 40 : 96, isMobile ? 40 : 96), planetMat);
   planetMesh.position.set(3.6, -1.5, -4.2);
   spaceGroup.add(planetMesh);
 
@@ -776,7 +806,7 @@ function initWelcome(){
   spaceGroup.add(sunCorona);
 
   function makeNebulaTexture(hex){
-    const s = 512;
+    const s = isMobile ? 300 : 512;
     const c = document.createElement('canvas'); c.width = c.height = s;
     const ctx = c.getContext('2d');
     for(let i=0;i<5;i++){
@@ -811,7 +841,7 @@ function initWelcome(){
   // scattered stars with gentle twinkle
   const brightStarMat = new THREE.SpriteMaterial({ map: glowTex('#ffffff'), color:0xffffff, transparent:true, opacity:0.85, blending:THREE.AdditiveBlending, depthWrite:false });
   const twinkleStars = [];
-  for(let i=0;i<55;i++){
+  for(let i=0;i<(isMobile?28:55);i++){
     const st = new THREE.Sprite(brightStarMat.clone());
     const sc = 0.035 + Math.random()*0.09;
     st.scale.set(sc,sc,1);
@@ -821,7 +851,7 @@ function initWelcome(){
   }
 
   // ambient bokeh field behind the text
-  const bgCount = 140;
+  const bgCount = isMobile ? 70 : 140;
   const bgPos = new Float32Array(bgCount*3);
   for(let i=0;i<bgCount;i++){
     bgPos[i*3] = (Math.random()-0.5)*30;
@@ -864,7 +894,7 @@ function initWelcome(){
   window.addEventListener('resize', resize);
 
   const clock = new THREE.Clock();
-  let assembling = true, exiting = false, exitStart = 0;
+  let assembling = true, exiting = false, exitStart = 0, crashed = false;
   const startTime = clock.getElapsedTime();
   const maxFinish = Math.max(...Array.from(delays)) + Math.max(...Array.from(durations));
 
@@ -876,6 +906,8 @@ function initWelcome(){
 
   function animate(){
     requestAnimationFrame(animate);
+    if(crashed) return;
+    try{
     const dt = clock.getDelta();
     const t = clock.getElapsedTime() - startTime;
 
@@ -947,6 +979,13 @@ function initWelcome(){
     }
 
     renderer.render(scene, camera);
+    } catch(err){
+      crashed = true;
+      console.error('Welcome animation error — skipping to main site', err);
+      const w = document.getElementById('welcome');
+      if(w) w.style.display = 'none';
+      finishWelcome();
+    }
   }
   animate();
 
@@ -965,9 +1004,19 @@ function initWelcome(){
     }});
   }
   document.getElementById('welcome').addEventListener('click', triggerEnter);
+
+  } catch(err){
+    console.error('Welcome scene failed to initialise — skipping to main site', err);
+    const w = document.getElementById('welcome');
+    if(w) w.style.display = 'none';
+    finishWelcome();
+  }
 }
 
+let welcomeFinished = false;
 function finishWelcome(){
+  if(welcomeFinished) return;
+  welcomeFinished = true;
   document.documentElement.style.overflow = '';
   startHeroSequence();
   typeTerminal();
@@ -981,6 +1030,14 @@ window.addEventListener('load', ()=>{
   } else {
     initWelcome();
   }
+  // absolute last-resort: never leave someone stuck on the welcome screen
+  setTimeout(()=>{
+    if(!welcomeFinished){
+      const w = document.getElementById('welcome');
+      if(w) w.style.display = 'none';
+      finishWelcome();
+    }
+  }, 9000);
 });
 let welcomeInited = false;
 const _origInitWelcome = initWelcome;
